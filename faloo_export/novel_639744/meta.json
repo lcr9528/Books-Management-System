@@ -1,0 +1,229 @@
+{
+  "novel_id": "639744",
+  "title": "小欢喜：我是方一凡",
+  "author": "不想搬砖",
+  "cover_url": "http://img.faloo.com/Novel/498x705/0/311/000311265.jpg",
+  "toc_url": "https://b.faloo.com/html_639_639744/",
+  "category_main": "青春校园",
+  "category_sub": "菁菁校园",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_639_639744/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 1313,
+  "intro_file": "novel_639744\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 意外人生，我是方一凡",
+      "file": "novel_639744\\chapters\\0001_第一章 意外人生，我是方一凡.txt",
+      "page_title": "小欢喜：我是方一凡   第一章 意外人生，我是方一凡"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 初遇英子，系统任务",
+      "file": "novel_639744\\chapters\\0002_第二章 初遇英子，系统任务.txt",
+      "page_title": "小欢喜：我是方一凡   第二章 初遇英子，系统任务"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 系统出品，必属废品",
+      "file": "novel_639744\\chapters\\0003_第三章 系统出品，必属废品.txt",
+      "page_title": "小欢喜：我是方一凡   第三章 系统出品，必属废品"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 陶子季杨，粉墨登场",
+      "file": "novel_639744\\chapters\\0004_第四章 陶子季杨，粉墨登场.txt",
+      "page_title": "小欢喜：我是方一凡   第四章 陶子季杨，粉墨登场"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章 撞脸英子，惩罚季杨",
+      "file": "novel_639744\\chapters\\0005_第五章 撞脸英子，惩罚季杨.txt",
+      "page_title": "小欢喜：我是方一凡   第五章 撞脸英子，惩罚季杨"
+    },
+    {
+      "index": 8,
+      "sort_order": 6,
+      "toc_title": "第六章 众人簇拥，谋划未来",
+      "file": "novel_639744\\chapters\\0006_第六章 众人簇拥，谋划未来.txt",
+      "page_title": "小欢喜：我是方一凡   第六章 众人簇拥，谋划未来"
+    },
+    {
+      "index": 9,
+      "sort_order": 7,
+      "toc_title": "第七章 逆天改命，神级天赋",
+      "file": "novel_639744\\chapters\\0007_第七章 逆天改命，神级天赋.txt",
+      "page_title": "小欢喜：我是方一凡   第七章 逆天改命，神级天赋"
+    },
+    {
+      "index": 10,
+      "sort_order": 8,
+      "toc_title": "第八章 英子闺房，请求帮忙",
+      "file": "novel_639744\\chapters\\0008_第八章 英子闺房，请求帮忙.txt",
+      "page_title": "小欢喜：我是方一凡   第八章 英子闺房，请求帮忙"
+    },
+    {
+      "index": 11,
+      "sort_order": 9,
+      "toc_title": "第九章 录短视频，搭档演绎",
+      "file": "novel_639744\\chapters\\0009_第九章 录短视频，搭档演绎.txt",
+      "page_title": "小欢喜：我是方一凡   第九章 录短视频，搭档演绎"
+    },
+    {
+      "index": 12,
+      "sort_order": 10,
+      "toc_title": "第十章 视频完成，天大误会",
+      "file": "novel_639744\\chapters\\0010_第十章 视频完成，天大误会.txt",
+      "page_title": "小欢喜：我是方一凡   第十章 视频完成，天大误会"
+    },
+    {
+      "index": 13,
+      "sort_order": 11,
+      "toc_title": "第十一章 误会更大，以死谢罪",
+      "file": "novel_639744\\chapters\\0011_第十一章 误会更大，以死谢罪.txt",
+      "page_title": "小欢喜：我是方一凡   第十一章 误会更大，以死谢罪"
+    },
+    {
+      "index": 14,
+      "sort_order": 12,
+      "toc_title": "第十二章 可劲作死，火力全开",
+      "file": "novel_639744\\chapters\\0012_第十二章 可劲作死，火力全开.txt",
+      "page_title": "小欢喜：我是方一凡   第十二章 可劲作死，火力全开"
+    },
+    {
+      "index": 15,
+      "sort_order": 13,
+      "toc_title": "第十三章 地狱难度，开始说服",
+      "file": "novel_639744\\chapters\\0013_第十三章 地狱难度，开始说服.txt",
+      "page_title": "小欢喜：我是方一凡   第十三章 地狱难度，开始说服"
+    },
+    {
+      "index": 16,
+      "sort_order": 14,
+      "toc_title": "第十四章 神级天赋，入户口本",
+      "file": "novel_639744\\chapters\\0014_第十四章 神级天赋，入户口本.txt",
+      "page_title": "小欢喜：我是方一凡   第十四章 神级天赋，入户口本"
+    },
+    {
+      "index": 17,
+      "sort_order": 15,
+      "toc_title": "第十五章抽取天赋，上传视频",
+      "file": "novel_639744\\chapters\\0015_第十五章抽取天赋，上传视频.txt",
+      "page_title": "小欢喜：我是方一凡   第十五章抽取天赋，上传视频"
+    },
+    {
+      "index": 19,
+      "sort_order": 16,
+      "toc_title": "第十六章 女人善变，劝说搬家",
+      "file": "novel_639744\\chapters\\0016_第十六章 女人善变，劝说搬家.txt",
+      "page_title": "小欢喜：我是方一凡   第十六章 女人善变，劝说搬家"
+    },
+    {
+      "index": 20,
+      "sort_order": 17,
+      "toc_title": "第十七章 少女表白，亲妈围观",
+      "file": "novel_639744\\chapters\\0017_第十七章 少女表白，亲妈围观.txt",
+      "page_title": "小欢喜：我是方一凡   第十七章 少女表白，亲妈围观"
+    },
+    {
+      "index": 21,
+      "sort_order": 18,
+      "toc_title": "第十八章 伸手忽悠，一直徘徊",
+      "file": "novel_639744\\chapters\\0018_第十八章 伸手忽悠，一直徘徊.txt",
+      "page_title": "小欢喜：我是方一凡   第十八章 伸手忽悠，一直徘徊"
+    },
+    {
+      "index": 22,
+      "sort_order": 19,
+      "toc_title": "第十九章 女生同意，你可以进",
+      "file": "novel_639744\\chapters\\0019_第十九章 女生同意，你可以进.txt",
+      "page_title": "小欢喜：我是方一凡   第十九章 女生同意，你可以进"
+    },
+    {
+      "index": 23,
+      "sort_order": 20,
+      "toc_title": "第二十章 真的去了，目瞪口呆",
+      "file": "novel_639744\\chapters\\0020_第二十章 真的去了，目瞪口呆.txt",
+      "page_title": "小欢喜：我是方一凡   第二十章 真的去了，目瞪口呆"
+    },
+    {
+      "index": 24,
+      "sort_order": 21,
+      "toc_title": "第二十一章 厕所饱嗝，本命英子",
+      "file": "novel_639744\\chapters\\0021_第二十一章 厕所饱嗝，本命英子.txt",
+      "page_title": "小欢喜：我是方一凡   第二十一章 厕所饱嗝，本命英子"
+    },
+    {
+      "index": 25,
+      "sort_order": 22,
+      "toc_title": "第二十二章 出生没有，后来难有",
+      "file": "novel_639744\\chapters\\0022_第二十二章 出生没有，后来难有.txt",
+      "page_title": "小欢喜：我是方一凡   第二十二章 出生没有，后来难有"
+    },
+    {
+      "index": 26,
+      "sort_order": 23,
+      "toc_title": "第二十三章 粉碎骄傲，陶子晕倒",
+      "file": "novel_639744\\chapters\\0023_第二十三章 粉碎骄傲，陶子晕倒.txt",
+      "page_title": "小欢喜：我是方一凡   第二十三章 粉碎骄傲，陶子晕倒"
+    },
+    {
+      "index": 27,
+      "sort_order": 24,
+      "toc_title": "第二十四章 恋爱赌约，三尺战场",
+      "file": "novel_639744\\chapters\\0024_第二十四章 恋爱赌约，三尺战场.txt",
+      "page_title": "小欢喜：我是方一凡   第二十四章 恋爱赌约，三尺战场"
+    },
+    {
+      "index": 28,
+      "sort_order": 25,
+      "toc_title": "第二十五章 倒数第一，了解一下",
+      "file": "novel_639744\\chapters\\0025_第二十五章 倒数第一，了解一下.txt",
+      "page_title": "小欢喜：我是方一凡   第二十五章 倒数第一，了解一下"
+    },
+    {
+      "index": 33,
+      "sort_order": 26,
+      "toc_title": "第二十六章 唇刀舌剑，锋芒毕露",
+      "file": "novel_639744\\chapters\\0026_第二十六章 唇刀舌剑，锋芒毕露.txt",
+      "page_title": "小欢喜：我是方一凡   第二十六章 唇刀舌剑，锋芒毕露"
+    },
+    {
+      "index": 34,
+      "sort_order": 27,
+      "toc_title": "第二十七章 光明正大，弯道超车",
+      "file": "novel_639744\\chapters\\0027_第二十七章 光明正大，弯道超车.txt",
+      "page_title": "小欢喜：我是方一凡   第二十七章 光明正大，弯道超车"
+    },
+    {
+      "index": 35,
+      "sort_order": 28,
+      "toc_title": "第二十八章 热烈掌声，最烦矫情",
+      "file": "novel_639744\\chapters\\0028_第二十八章 热烈掌声，最烦矫情.txt",
+      "page_title": "小欢喜：我是方一凡   第二十八章 热烈掌声，最烦矫情"
+    },
+    {
+      "index": 36,
+      "sort_order": 29,
+      "toc_title": "第二十九章 又见陶子，学校通知",
+      "file": "novel_639744\\chapters\\0029_第二十九章 又见陶子，学校通知.txt",
+      "page_title": "小欢喜：我是方一凡   第二十九章 又见陶子，学校通知"
+    },
+    {
+      "index": 37,
+      "sort_order": 30,
+      "toc_title": "第三十章 放飞梦想，挺有趣的",
+      "file": "novel_639744\\chapters\\0030_第三十章 放飞梦想，挺有趣的.txt",
+      "page_title": ""
+    }
+  ],
+  "cover_file": "novel_639744\\cover.jpg"
+}

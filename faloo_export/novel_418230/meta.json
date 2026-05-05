@@ -1,0 +1,89 @@
+{
+  "novel_id": "418230",
+  "title": "娱乐之QQ牧场系统",
+  "author": "诗成泣鬼神",
+  "cover_url": "http://img.faloo.com/Novel/498x705/0/167/000167302.jpg",
+  "toc_url": "https://b.faloo.com/html_418_418230/",
+  "category_main": "青春校园",
+  "category_sub": "校园言情",
+  "chapter_count_requested": 10,
+  "toc_pages": [
+    "https://b.faloo.com/html_418_418230/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 18742,
+  "intro_file": "novel_418230\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 2,
+      "sort_order": 1,
+      "toc_title": "第一章 穿越",
+      "file": "novel_418230\\chapters\\0001_第一章 穿越.txt",
+      "page_title": "娱乐之QQ牧场系统   第一章 穿越"
+    },
+    {
+      "index": 4,
+      "sort_order": 2,
+      "toc_title": "第二章 qq牧场",
+      "file": "novel_418230\\chapters\\0002_第二章 qq牧场.txt",
+      "page_title": "娱乐之QQ牧场系统   第二章 qq牧场"
+    },
+    {
+      "index": 9,
+      "sort_order": 3,
+      "toc_title": "第四章 表弟周凡（求鲜花！求收藏！）",
+      "file": "novel_418230\\chapters\\0003_第四章 表弟周凡（求鲜花！求收藏！）.txt",
+      "page_title": "娱乐之QQ牧场系统   第四章 表弟周凡（求鲜花！求收藏！）"
+    },
+    {
+      "index": 10,
+      "sort_order": 4,
+      "toc_title": "第五章 会变魔术的爸爸（求鲜花！求收藏！）",
+      "file": "novel_418230\\chapters\\0004_第五章 会变魔术的爸爸（求鲜花！求收藏！）.txt",
+      "page_title": "娱乐之QQ牧场系统   第五章 会变魔术的爸爸（求鲜花！求收藏！）"
+    },
+    {
+      "index": 11,
+      "sort_order": 5,
+      "toc_title": "第三章 做菜给女儿吃",
+      "file": "novel_418230\\chapters\\0005_第三章 做菜给女儿吃.txt",
+      "page_title": ""
+    },
+    {
+      "index": 18,
+      "sort_order": 6,
+      "toc_title": "第六章 给女儿上课（求鲜花！求收藏！）",
+      "file": "novel_418230\\chapters\\0006_第六章 给女儿上课（求鲜花！求收藏！）.txt",
+      "page_title": ""
+    },
+    {
+      "index": 19,
+      "sort_order": 7,
+      "toc_title": "第七章 给赵丽颖送牛奶（求鲜花！求收藏！）",
+      "file": "novel_418230\\chapters\\0007_第七章 给赵丽颖送牛奶（求鲜花！求收藏！）.txt",
+      "page_title": ""
+    },
+    {
+      "index": 22,
+      "sort_order": 8,
+      "toc_title": "第八章 好哭到流泪的牛奶（求鲜花！求收藏！）",
+      "file": "novel_418230\\chapters\\0008_第八章 好哭到流泪的牛奶（求鲜花！求收藏！）.txt",
+      "page_title": ""
+    },
+    {
+      "index": 23,
+      "sort_order": 9,
+      "toc_title": "第九章 先定一个小点的目标(求鲜花！求收藏！）",
+      "file": "novel_418230\\chapters\\0009_第九章 先定一个小点的目标(求鲜花！求收藏！）.txt",
+      "page_title": ""
+    },
+    {
+      "index": 24,
+      "sort_order": 10,
+      "toc_title": "第十章 一杯牛奶（求鲜花！求收藏！）",
+      "file": "novel_418230\\chapters\\0010_第十章 一杯牛奶（求鲜花！求收藏！）.txt",
+      "page_title": ""
+    }
+  ],
+  "cover_file": "novel_418230\\cover.jpg"
+}

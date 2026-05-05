@@ -1,0 +1,229 @@
+{
+  "novel_id": "640494",
+  "title": "我成了史上最强",
+  "author": "我是泥萌的现男友",
+  "cover_url": "http://img.faloo.com/Novel/498x705/0/309/000309716.jpg",
+  "toc_url": "https://b.faloo.com/html_640_640494/",
+  "category_main": "青春校园",
+  "category_sub": "菁菁校园",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_640_640494/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 128,
+  "intro_file": "novel_640494\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 他来自华夏（已修改）",
+      "file": "novel_640494\\chapters\\0001_第一章 他来自华夏（已修改）.txt",
+      "page_title": "我成了史上最强   第一章 他来自华夏（已修改）"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 惊人表现",
+      "file": "novel_640494\\chapters\\0002_第二章 惊人表现.txt",
+      "page_title": "我成了史上最强   第二章 惊人表现"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 硬刚追梦格林",
+      "file": "novel_640494\\chapters\\0003_第三章 硬刚追梦格林.txt",
+      "page_title": "我成了史上最强   第三章 硬刚追梦格林"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 抢断库里，反击三分",
+      "file": "novel_640494\\chapters\\0004_第四章 抢断库里，反击三分.txt",
+      "page_title": "我成了史上最强   第四章 抢断库里，反击三分"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章 惊喜连连",
+      "file": "novel_640494\\chapters\\0005_第五章 惊喜连连.txt",
+      "page_title": "我成了史上最强   第五章 惊喜连连"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第六章 宝藏男孩",
+      "file": "novel_640494\\chapters\\0006_第六章 宝藏男孩.txt",
+      "page_title": "我成了史上最强   第六章 宝藏男孩"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第七章  隋唐效应",
+      "file": "novel_640494\\chapters\\0007_第七章 隋唐效应.txt",
+      "page_title": "我成了史上最强   第七章 隋唐效应"
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "第八章 就是颜射你",
+      "file": "novel_640494\\chapters\\0008_第八章 就是颜射你.txt",
+      "page_title": "我成了史上最强   第八章 就是颜射你"
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "第九章  抢眼表现",
+      "file": "novel_640494\\chapters\\0009_第九章 抢眼表现.txt",
+      "page_title": "我成了史上最强   第九章 抢眼表现"
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "第十章 吃惊的利拉德",
+      "file": "novel_640494\\chapters\\0010_第十章 吃惊的利拉德.txt",
+      "page_title": "我成了史上最强   第十章 吃惊的利拉德"
+    },
+    {
+      "index": 11,
+      "sort_order": 11,
+      "toc_title": "第十一章  再次震惊",
+      "file": "novel_640494\\chapters\\0011_第十一章 再次震惊.txt",
+      "page_title": "我成了史上最强   第十一章 再次震惊"
+    },
+    {
+      "index": 12,
+      "sort_order": 12,
+      "toc_title": "第十二章 拔得头筹",
+      "file": "novel_640494\\chapters\\0012_第十二章 拔得头筹.txt",
+      "page_title": "我成了史上最强   第十二章 拔得头筹"
+    },
+    {
+      "index": 13,
+      "sort_order": 13,
+      "toc_title": "第十三章  开局打懵国王",
+      "file": "novel_640494\\chapters\\0013_第十三章 开局打懵国王.txt",
+      "page_title": "我成了史上最强   第十三章 开局打懵国王"
+    },
+    {
+      "index": 14,
+      "sort_order": 14,
+      "toc_title": "第十四章 信任",
+      "file": "novel_640494\\chapters\\0014_第十四章 信任.txt",
+      "page_title": "我成了史上最强   第十四章 信任"
+    },
+    {
+      "index": 15,
+      "sort_order": 15,
+      "toc_title": "第十五章 不服气的麦科勒姆",
+      "file": "novel_640494\\chapters\\0015_第十五章 不服气的麦科勒姆.txt",
+      "page_title": "我成了史上最强   第十五章 不服气的麦科勒姆"
+    },
+    {
+      "index": 16,
+      "sort_order": 16,
+      "toc_title": "第十六章 打服麦科勒姆",
+      "file": "novel_640494\\chapters\\0016_第十六章 打服麦科勒姆.txt",
+      "page_title": "我成了史上最强   第十六章 打服麦科勒姆"
+    },
+    {
+      "index": 17,
+      "sort_order": 17,
+      "toc_title": "第十七章 合同问题",
+      "file": "novel_640494\\chapters\\0017_第十七章 合同问题.txt",
+      "page_title": "我成了史上最强   第十七章 合同问题"
+    },
+    {
+      "index": 18,
+      "sort_order": 18,
+      "toc_title": "第十八章 尘埃落定",
+      "file": "novel_640494\\chapters\\0018_第十八章 尘埃落定.txt",
+      "page_title": "我成了史上最强   第十八章 尘埃落定"
+    },
+    {
+      "index": 19,
+      "sort_order": 19,
+      "toc_title": "第十九章 系统新变化",
+      "file": "novel_640494\\chapters\\0019_第十九章 系统新变化.txt",
+      "page_title": "我成了史上最强   第十九章 系统新变化"
+    },
+    {
+      "index": 20,
+      "sort_order": 20,
+      "toc_title": "第二十章  我配上自己的身价",
+      "file": "novel_640494\\chapters\\0020_第二十章 我配上自己的身价.txt",
+      "page_title": "我成了史上最强   第二十章 我配上自己的身价"
+    },
+    {
+      "index": 21,
+      "sort_order": 21,
+      "toc_title": "第二十一章  我就站在这里",
+      "file": "novel_640494\\chapters\\0021_第二十一章 我就站在这里.txt",
+      "page_title": "我成了史上最强   第二十一章 我就站在这里"
+    },
+    {
+      "index": 22,
+      "sort_order": 22,
+      "toc_title": "第二十二章  单节无限出手权",
+      "file": "novel_640494\\chapters\\0022_第二十二章 单节无限出手权.txt",
+      "page_title": "我成了史上最强   第二十二章 单节无限出手权"
+    },
+    {
+      "index": 23,
+      "sort_order": 23,
+      "toc_title": "第二十三章  连续出手",
+      "file": "novel_640494\\chapters\\0023_第二十三章 连续出手.txt",
+      "page_title": "我成了史上最强   第二十三章 连续出手"
+    },
+    {
+      "index": 24,
+      "sort_order": 24,
+      "toc_title": "第二十四章 连续出击，打崩对手",
+      "file": "novel_640494\\chapters\\0024_第二十四章 连续出击，打崩对手.txt",
+      "page_title": "我成了史上最强   第二十四章 连续出击，打崩对手"
+    },
+    {
+      "index": 25,
+      "sort_order": 25,
+      "toc_title": "加更",
+      "file": "novel_640494\\chapters\\0025_加更.txt",
+      "page_title": "我成了史上最强   加更"
+    },
+    {
+      "index": 26,
+      "sort_order": 26,
+      "toc_title": "第二十五章 脑残记者",
+      "file": "novel_640494\\chapters\\0026_第二十五章 脑残记者.txt",
+      "page_title": "我成了史上最强   第二十五章 脑残记者"
+    },
+    {
+      "index": 27,
+      "sort_order": 27,
+      "toc_title": "爆更宣言",
+      "file": "novel_640494\\chapters\\0027_爆更宣言.txt",
+      "page_title": "我成了史上最强   爆更宣言"
+    },
+    {
+      "index": 28,
+      "sort_order": 28,
+      "toc_title": "第二十六章 我要打出表现（第一更）",
+      "file": "novel_640494\\chapters\\0028_第二十六章 我要打出表现（第一更）.txt",
+      "page_title": "我成了史上最强   第二十六章 我要打出表现（第一更）"
+    },
+    {
+      "index": 29,
+      "sort_order": 29,
+      "toc_title": "第二十七章  超远三分震慑（第二更）",
+      "file": "novel_640494\\chapters\\0029_第二十七章 超远三分震慑（第二更）.txt",
+      "page_title": ""
+    },
+    {
+      "index": 30,
+      "sort_order": 30,
+      "toc_title": "第二十八章 太阳缓了一下（第三更）",
+      "file": "novel_640494\\chapters\\0030_第二十八章 太阳缓了一下（第三更）.txt",
+      "page_title": ""
+    }
+  ],
+  "cover_file": "novel_640494\\cover.jpg"
+}

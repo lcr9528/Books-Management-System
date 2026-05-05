@@ -1,0 +1,89 @@
+{
+  "novel_id": "1525327",
+  "title": "陛下，抄家的钱可否三七分",
+  "author": "早起搬砖呢",
+  "cover_url": "http://img.faloo.com/Novel/498x705/1/1632/001632859.jpg",
+  "toc_url": "https://b.faloo.com/html_1525_1525327/",
+  "category_main": "青春校园",
+  "category_sub": "校园言情",
+  "chapter_count_requested": 10,
+  "toc_pages": [
+    "https://b.faloo.com/html_1525_1525327/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 31,
+  "intro_file": "novel_1525327\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 断肋骨",
+      "file": "novel_1525327\\chapters\\0001_第一章 断肋骨.txt",
+      "page_title": "陛下，抄家的钱可否三七分   第一章 断肋骨"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 城西枯井",
+      "file": "novel_1525327\\chapters\\0002_第二章 城西枯井.txt",
+      "page_title": "陛下，抄家的钱可否三七分   第二章 城西枯井"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 万寿宫对奏",
+      "file": "novel_1525327\\chapters\\0003_第三章 万寿宫对奏.txt",
+      "page_title": "陛下，抄家的钱可否三七分   第三章 万寿宫对奏"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 名单上的第一个人",
+      "file": "novel_1525327\\chapters\\0004_第四章 名单上的第一个人.txt",
+      "page_title": "陛下，抄家的钱可否三七分   第四章 名单上的第一个人"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章 王爷的影子",
+      "file": "novel_1525327\\chapters\\0005_第五章 王爷的影子.txt",
+      "page_title": "陛下，抄家的钱可否三七分   第五章 王爷的影子"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第六章 钱守业写的第二份东西",
+      "file": "novel_1525327\\chapters\\0006_第六章 钱守业写的第二份东西.txt",
+      "page_title": "陛下，抄家的钱可否三七分   第六章 钱守业写的第二份东西"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第七章 银子是凉的",
+      "file": "novel_1525327\\chapters\\0007_第七章 银子是凉的.txt",
+      "page_title": "陛下，抄家的钱可否三七分   第七章 银子是凉的"
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "第八章 裕王的诚意",
+      "file": "novel_1525327\\chapters\\0008_第八章 裕王的诚意.txt",
+      "page_title": "陛下，抄家的钱可否三七分   第八章 裕王的诚意"
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "第九章 选边站",
+      "file": "novel_1525327\\chapters\\0009_第九章 选边站.txt",
+      "page_title": "陛下，抄家的钱可否三七分   第九章 选边站"
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "第十章 密折",
+      "file": "novel_1525327\\chapters\\0010_第十章 密折.txt",
+      "page_title": "陛下，抄家的钱可否三七分   第十章 密折"
+    }
+  ],
+  "cover_file": "novel_1525327\\cover.jpg"
+}

@@ -1,0 +1,89 @@
+{
+  "novel_id": "844627",
+  "title": "废墟求生：我能让万物无限进化",
+  "author": "各种控",
+  "cover_url": "http://img.faloo.com/Novel/498x705/0/840/000840433.jpg",
+  "toc_url": "https://b.faloo.com/html_844_844627/",
+  "category_main": "玄幻奇幻",
+  "category_sub": "异世大陆",
+  "chapter_count_requested": 10,
+  "toc_pages": [
+    "https://b.faloo.com/html_844_844627/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 4597,
+  "intro_file": "novel_844627\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "001：废土般末日的世界。",
+      "file": "novel_844627\\chapters\\0001_001：废土般末日的世界。.txt",
+      "page_title": "废墟求生：我能让万物无限进化   001：废土般末日的世界。"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "002：第一只驯养的动物。",
+      "file": "novel_844627\\chapters\\0002_002：第一只驯养的动物。.txt",
+      "page_title": "废墟求生：我能让万物无限进化   002：第一只驯养的动物。"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "003：继承岩甲龟的能力。",
+      "file": "novel_844627\\chapters\\0003_003：继承岩甲龟的能力。.txt",
+      "page_title": "废墟求生：我能让万物无限进化   003：继承岩甲龟的能力。"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "004：驯养第二只动物。",
+      "file": "novel_844627\\chapters\\0004_004：驯养第二只动物。.txt",
+      "page_title": "废墟求生：我能让万物无限进化   004：驯养第二只动物。"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "005：长着蓝色兔耳朵的少女。",
+      "file": "novel_844627\\chapters\\0005_005：长着蓝色兔耳朵的少女。.txt",
+      "page_title": "废墟求生：我能让万物无限进化   005：长着蓝色兔耳朵的少女。"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "006：米诺：我是异变者。",
+      "file": "novel_844627\\chapters\\0006_006：米诺：我是异变者。.txt",
+      "page_title": "废墟求生：我能让万物无限进化   006：米诺：我是异变者。"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "007：第一次进化。",
+      "file": "novel_844627\\chapters\\0007_007：第一次进化。.txt",
+      "page_title": "废墟求生：我能让万物无限进化   007：第一次进化。"
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "008：移动的房子。",
+      "file": "novel_844627\\chapters\\0008_008：移动的房子。.txt",
+      "page_title": "废墟求生：我能让万物无限进化   008：移动的房子。"
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "009：我也不知道什么样才算饱。",
+      "file": "novel_844627\\chapters\\0009_009：我也不知道什么样才算饱。.txt",
+      "page_title": "废墟求生：我能让万物无限进化   009：我也不知道什么样才算饱。"
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "010：人无横财不富。",
+      "file": "novel_844627\\chapters\\0010_010：人无横财不富。.txt",
+      "page_title": "废墟求生：我能让万物无限进化   010：人无横财不富。"
+    }
+  ],
+  "cover_file": "novel_844627\\cover.jpg"
+}

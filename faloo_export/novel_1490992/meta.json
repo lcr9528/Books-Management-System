@@ -1,0 +1,54 @@
+{
+  "novel_id": "1490992",
+  "title": "旧恨千缕",
+  "author": "暴走杰瑞",
+  "cover_url": "http://img.faloo.com/Novel/498x705/1/1600/001600562.jpg",
+  "toc_url": "https://b.faloo.com/html_1490_1490992/",
+  "category_main": "玄幻奇幻",
+  "category_sub": "东方玄幻",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_1490_1490992/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 4,
+  "intro_file": "novel_1490992\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 白民之国大皇子初现！叫他销本一吧",
+      "file": "novel_1490992\\chapters\\0001_第一章 白民之国大皇子初现！叫他销本一吧.txt",
+      "page_title": "旧恨千缕   第一章 白民之国大皇子初现！叫他销本一吧"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章白帝的过去爱恨情仇？",
+      "file": "novel_1490992\\chapters\\0002_第二章白帝的过去爱恨情仇？.txt",
+      "page_title": "旧恨千缕   第二章白帝的过去爱恨情仇？"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章白修由初见姚瞳安，白皇子和穷奇？",
+      "file": "novel_1490992\\chapters\\0003_第三章白修由初见姚瞳安，白皇子和穷奇？.txt",
+      "page_title": "旧恨千缕   第三章白修由初见姚瞳安，白皇子和穷奇？"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章姚瞳安被驱逐，她出手相助！",
+      "file": "novel_1490992\\chapters\\0004_第四章姚瞳安被驱逐，她出手相助！.txt",
+      "page_title": "旧恨千缕   第四章姚瞳安被驱逐，她出手相助！"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章",
+      "file": "novel_1490992\\chapters\\0005_第五章.txt",
+      "page_title": "旧恨千缕   第五章"
+    }
+  ],
+  "cover_file": "novel_1490992\\cover.jpg"
+}

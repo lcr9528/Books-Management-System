@@ -1,0 +1,75 @@
+{
+  "novel_id": "940467",
+  "title": "浪漫传说之校园邪神",
+  "author": "雪诺星云",
+  "cover_url": "http://img.faloo.com/novel/images/cover/498x705.jpg",
+  "toc_url": "https://b.faloo.com/html_940_940467/",
+  "category_main": "青春校园",
+  "category_sub": "菁菁校园",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_940_940467/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 8,
+  "intro_file": "novel_940467\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第1章 光影",
+      "file": "novel_940467\\chapters\\0001_第1章 光影.txt",
+      "page_title": "浪漫传说之校园邪神   第1章 光影"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 玄空的异动",
+      "file": "novel_940467\\chapters\\0002_第二章 玄空的异动.txt",
+      "page_title": "浪漫传说之校园邪神   第二章 玄空的异动"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 血翅",
+      "file": "novel_940467\\chapters\\0003_第三章 血翅.txt",
+      "page_title": "浪漫传说之校园邪神   第三章 血翅"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 五色彩翼",
+      "file": "novel_940467\\chapters\\0004_第四章 五色彩翼.txt",
+      "page_title": "浪漫传说之校园邪神   第四章 五色彩翼"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章  初绽实力",
+      "file": "novel_940467\\chapters\\0005_第五章 初绽实力.txt",
+      "page_title": "浪漫传说之校园邪神   第五章 初绽实力"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第六章  失踪",
+      "file": "novel_940467\\chapters\\0006_第六章 失踪.txt",
+      "page_title": "浪漫传说之校园邪神   第六章 失踪"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第七章  神秘黑衣人",
+      "file": "novel_940467\\chapters\\0007_第七章 神秘黑衣人.txt",
+      "page_title": "浪漫传说之校园邪神   第七章 神秘黑衣人"
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "第八章 被卖了？",
+      "file": "novel_940467\\chapters\\0008_第八章 被卖了？.txt",
+      "page_title": "浪漫传说之校园邪神   第八章 被卖了？"
+    }
+  ],
+  "cover_file": "novel_940467\\cover.jpg"
+}

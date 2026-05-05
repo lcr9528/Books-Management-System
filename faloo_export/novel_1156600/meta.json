@@ -1,0 +1,229 @@
+{
+  "novel_id": "1156600",
+  "title": "咸鱼加点盐",
+  "author": "磁共振熵",
+  "cover_url": "http://img.faloo.com/Novel/498x705/0/864/000864217.jpg",
+  "toc_url": "https://b.faloo.com/html_1156_1156600/",
+  "category_main": "青春校园",
+  "category_sub": "菁菁校园",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_1156_1156600/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 63,
+  "intro_file": "novel_1156600\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "序",
+      "file": "novel_1156600\\chapters\\0001_序.txt",
+      "page_title": "咸鱼加点盐   序"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第一章 吃关东煮竟然可以这样操作？",
+      "file": "novel_1156600\\chapters\\0002_第一章 吃关东煮竟然可以这样操作？.txt",
+      "page_title": "咸鱼加点盐   第一章 吃关东煮竟然可以这样操作？"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第二章 好哥们不对劲",
+      "file": "novel_1156600\\chapters\\0003_第二章 好哥们不对劲.txt",
+      "page_title": "咸鱼加点盐   第二章 好哥们不对劲"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第三章 疫情让我变傻了，我被兄弟耍了",
+      "file": "novel_1156600\\chapters\\0004_第三章 疫情让我变傻了，我被兄弟耍了.txt",
+      "page_title": "咸鱼加点盐   第三章 疫情让我变傻了，我被兄弟耍了"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第四章 作为艺优生，弱弱的萌妹子其实是？",
+      "file": "novel_1156600\\chapters\\0005_第四章 作为艺优生，弱弱的萌妹子其实是？.txt",
+      "page_title": ""
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第五章 中国人民真热情~",
+      "file": "novel_1156600\\chapters\\0006_第五章 中国人民真热情~.txt",
+      "page_title": ""
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第六章 白卡的Louis哥哥",
+      "file": "novel_1156600\\chapters\\0007_第六章 白卡的Louis哥哥.txt",
+      "page_title": ""
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "0 关于咸鱼作者",
+      "file": "novel_1156600\\chapters\\0008_0 关于咸鱼作者.txt",
+      "page_title": ""
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "五二一番外篇 小小的勇敢",
+      "file": "novel_1156600\\chapters\\0009_五二一番外篇 小小的勇敢.txt",
+      "page_title": ""
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "第七章 拎包入住",
+      "file": "novel_1156600\\chapters\\0010_第七章 拎包入住.txt",
+      "page_title": ""
+    },
+    {
+      "index": 11,
+      "sort_order": 11,
+      "toc_title": "第八章 原来你是这样的原步高中！",
+      "file": "novel_1156600\\chapters\\0011_第八章 原来你是这样的原步高中！.txt",
+      "page_title": ""
+    },
+    {
+      "index": 13,
+      "sort_order": 12,
+      "toc_title": "第九章 温暖的剪影，是心动",
+      "file": "novel_1156600\\chapters\\0012_第九章 温暖的剪影，是心动.txt",
+      "page_title": ""
+    },
+    {
+      "index": 14,
+      "sort_order": 13,
+      "toc_title": "第十章 学音乐是因为爱国主义的熏陶",
+      "file": "novel_1156600\\chapters\\0013_第十章 学音乐是因为爱国主义的熏陶.txt",
+      "page_title": ""
+    },
+    {
+      "index": 15,
+      "sort_order": 14,
+      "toc_title": "第十一章 初露端倪",
+      "file": "novel_1156600\\chapters\\0014_第十一章 初露端倪.txt",
+      "page_title": ""
+    },
+    {
+      "index": 16,
+      "sort_order": 15,
+      "toc_title": "六一番外 就当我们还年幼",
+      "file": "novel_1156600\\chapters\\0015_六一番外 就当我们还年幼.txt",
+      "page_title": ""
+    },
+    {
+      "index": 17,
+      "sort_order": 16,
+      "toc_title": "第十二章 熟能生巧好像不需要时间",
+      "file": "novel_1156600\\chapters\\0016_第十二章 熟能生巧好像不需要时间.txt",
+      "page_title": ""
+    },
+    {
+      "index": 18,
+      "sort_order": 17,
+      "toc_title": "第十三章 看了一眼钟，差点为自己送终",
+      "file": "novel_1156600\\chapters\\0017_第十三章 看了一眼钟，差点为自己送终.txt",
+      "page_title": ""
+    },
+    {
+      "index": 19,
+      "sort_order": 18,
+      "toc_title": "第十四章 帝感其诚",
+      "file": "novel_1156600\\chapters\\0018_第十四章 帝感其诚.txt",
+      "page_title": ""
+    },
+    {
+      "index": 20,
+      "sort_order": 19,
+      "toc_title": "第十五章 当白卡拿出白金卡",
+      "file": "novel_1156600\\chapters\\0019_第十五章 当白卡拿出白金卡.txt",
+      "page_title": ""
+    },
+    {
+      "index": 23,
+      "sort_order": 20,
+      "toc_title": "第十六章 抱大腿？谁怕谁啊！",
+      "file": "novel_1156600\\chapters\\0020_第十六章 抱大腿？谁怕谁啊！.txt",
+      "page_title": ""
+    },
+    {
+      "index": 24,
+      "sort_order": 21,
+      "toc_title": "第十七章 只是朋友",
+      "file": "novel_1156600\\chapters\\0021_第十七章 只是朋友.txt",
+      "page_title": ""
+    },
+    {
+      "index": 25,
+      "sort_order": 22,
+      "toc_title": "第十八章 两个蹩脚的“小偷”，觉得窗台有些别脚",
+      "file": "novel_1156600\\chapters\\0022_第十八章 两个蹩脚的“小偷”，觉得窗台有些别脚.txt",
+      "page_title": ""
+    },
+    {
+      "index": 27,
+      "sort_order": 23,
+      "toc_title": "第十九章 你的备注",
+      "file": "novel_1156600\\chapters\\0023_第十九章 你的备注.txt",
+      "page_title": ""
+    },
+    {
+      "index": 28,
+      "sort_order": 24,
+      "toc_title": "第二十章 如何做一条合格的咸鱼",
+      "file": "novel_1156600\\chapters\\0024_第二十章 如何做一条合格的咸鱼.txt",
+      "page_title": "咸鱼加点盐   第二十章 如何做一条合格的咸鱼"
+    },
+    {
+      "index": 29,
+      "sort_order": 25,
+      "toc_title": "第二十一章 幸好你回到我身边",
+      "file": "novel_1156600\\chapters\\0025_第二十一章 幸好你回到我身边.txt",
+      "page_title": "咸鱼加点盐   第二十一章 幸好你回到我身边"
+    },
+    {
+      "index": 30,
+      "sort_order": 26,
+      "toc_title": "第二十二章 你好，我叫……",
+      "file": "novel_1156600\\chapters\\0026_第二十二章 你好，我叫…….txt",
+      "page_title": "咸鱼加点盐   第二十二章 你好，我叫……"
+    },
+    {
+      "index": 31,
+      "sort_order": 27,
+      "toc_title": "第二十三章 他的乐谱在我这里",
+      "file": "novel_1156600\\chapters\\0027_第二十三章 他的乐谱在我这里.txt",
+      "page_title": "咸鱼加点盐   第二十三章 他的乐谱在我这里"
+    },
+    {
+      "index": 32,
+      "sort_order": 28,
+      "toc_title": "姒时篇 初遇",
+      "file": "novel_1156600\\chapters\\0028_姒时篇 初遇.txt",
+      "page_title": "咸鱼加点盐   姒时篇 初遇"
+    },
+    {
+      "index": 33,
+      "sort_order": 29,
+      "toc_title": "第二十四章 小号声部出“人才”",
+      "file": "novel_1156600\\chapters\\0029_第二十四章 小号声部出“人才”.txt",
+      "page_title": "咸鱼加点盐   第二十四章 小号声部出“人才”"
+    },
+    {
+      "index": 34,
+      "sort_order": 30,
+      "toc_title": "第二十五章 本以为自己是猎人",
+      "file": "novel_1156600\\chapters\\0030_第二十五章 本以为自己是猎人.txt",
+      "page_title": "咸鱼加点盐   第二十五章 本以为自己是猎人"
+    }
+  ],
+  "cover_file": "novel_1156600\\cover.jpg"
+}

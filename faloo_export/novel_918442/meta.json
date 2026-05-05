@@ -1,0 +1,96 @@
+{
+  "novel_id": "918442",
+  "title": "学霸：求求你别学了，真的跟不上",
+  "author": "梦回高三",
+  "cover_url": "http://img.faloo.com/Novel/498x705/0/623/000623619.jpg",
+  "toc_url": "https://b.faloo.com/html_918_918442/",
+  "category_main": "青春校园",
+  "category_sub": "菁菁校园",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_918_918442/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 11,
+  "intro_file": "novel_918442\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "001：梦回高三 豆蔻年华",
+      "file": "novel_918442\\chapters\\0001_001：梦回高三 豆蔻年华.txt",
+      "page_title": "学霸：求求你别学了，真的跟不上   001：梦回高三 豆蔻年华"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "002：buff加持",
+      "file": "novel_918442\\chapters\\0002_002：buff加持.txt",
+      "page_title": "学霸：求求你别学了，真的跟不上   002：buff加持"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "003：真正的学霸是不在乎一时的得失",
+      "file": "novel_918442\\chapters\\0003_003：真正的学霸是不在乎一时的得失.txt",
+      "page_title": "学霸：求求你别学了，真的跟不上   003：真正的学霸是不在乎一时的得失"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "004：难道他偷偷报补习班",
+      "file": "novel_918442\\chapters\\0004_004：难道他偷偷报补习班.txt",
+      "page_title": "学霸：求求你别学了，真的跟不上   004：难道他偷偷报补习班"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "005：至少自己要成为一个学霸",
+      "file": "novel_918442\\chapters\\0005_005：至少自己要成为一个学霸.txt",
+      "page_title": "学霸：求求你别学了，真的跟不上   005：至少自己要成为一个学霸"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "006：如何成为一个学霸",
+      "file": "novel_918442\\chapters\\0006_006：如何成为一个学霸.txt",
+      "page_title": "学霸：求求你别学了，真的跟不上   006：如何成为一个学霸"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "007：提前交卷",
+      "file": "novel_918442\\chapters\\0007_007：提前交卷.txt",
+      "page_title": "学霸：求求你别学了，真的跟不上   007：提前交卷"
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "008：可能，我开挂了吧",
+      "file": "novel_918442\\chapters\\0008_008：可能，我开挂了吧.txt",
+      "page_title": "学霸：求求你别学了，真的跟不上   008：可能，我开挂了吧"
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "009：怀疑作弊？",
+      "file": "novel_918442\\chapters\\0009_009：怀疑作弊？.txt",
+      "page_title": "学霸：求求你别学了，真的跟不上   009：怀疑作弊？"
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "010：竞赛题？",
+      "file": "novel_918442\\chapters\\0010_010：竞赛题？.txt",
+      "page_title": "学霸：求求你别学了，真的跟不上   010：竞赛题？"
+    },
+    {
+      "index": 11,
+      "sort_order": 11,
+      "toc_title": "011：这小子，心挺野",
+      "file": "novel_918442\\chapters\\0011_011：这小子，心挺野.txt",
+      "page_title": "学霸：求求你别学了，真的跟不上   011：这小子，心挺野"
+    }
+  ],
+  "cover_file": "novel_918442\\cover.jpg"
+}

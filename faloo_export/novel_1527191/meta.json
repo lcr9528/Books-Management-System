@@ -1,0 +1,68 @@
+{
+  "novel_id": "1527191",
+  "title": "离谱！我越主动作死，活得越久",
+  "author": "年月旼",
+  "cover_url": "http://img.faloo.com/Novel/498x705/1/1634/001634784.jpg",
+  "toc_url": "https://b.faloo.com/html_1527_1527191/",
+  "category_main": "玄幻奇幻",
+  "category_sub": "东方玄幻",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_1527_1527191/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 5,
+  "intro_file": "novel_1527191\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第1章 衰体只剩3天寿！闯禁地作死竟捡回一条命",
+      "file": "novel_1527191\\chapters\\0001_第1章 衰体只剩3天寿！闯禁地作死竟捡回一条命.txt",
+      "page_title": "离谱！我越主动作死，活得越久   第1章 衰体只剩3天寿！闯禁地作死竟捡回一条命"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第2章 抢天才灵根被追杀？我反手突破还被长老夸",
+      "file": "novel_1527191\\chapters\\0002_第2章 抢天才灵根被追杀？我反手突破还被长老夸.txt",
+      "page_title": "离谱！我越主动作死，活得越久   第2章 抢天才灵根被追杀？我反手突破还被长老夸"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第3章 躺平一天掉一层！不作死是真的会死",
+      "file": "novel_1527191\\chapters\\0003_第3章 躺平一天掉一层！不作死是真的会死.txt",
+      "page_title": "离谱！我越主动作死，活得越久   第3章 躺平一天掉一层！不作死是真的会死"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第4章 故意挑衅筑基师兄被胖揍？反赚突破和师兄受罚",
+      "file": "novel_1527191\\chapters\\0004_第4章 故意挑衅筑基师兄被胖揍？反赚突破和师兄受罚.txt",
+      "page_title": "离谱！我越主动作死，活得越久   第4章 故意挑衅筑基师兄被胖揍？反赚突破和师兄受罚"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第5章 对影成三人，纸人的窥视",
+      "file": "novel_1527191\\chapters\\0005_第5章 对影成三人，纸人的窥视.txt",
+      "page_title": "离谱！我越主动作死，活得越久   第5章 对影成三人，纸人的窥视"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第6章 定魂针首秀，缝合禁忌",
+      "file": "novel_1527191\\chapters\\0006_第6章 定魂针首秀，缝合禁忌.txt",
+      "page_title": "离谱！我越主动作死，活得越久   第6章 定魂针首秀，缝合禁忌"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第7章 尸变前夕，反向布局",
+      "file": "novel_1527191\\chapters\\0007_第7章 尸变前夕，反向布局.txt",
+      "page_title": "离谱！我越主动作死，活得越久   第7章 尸变前夕，反向布局"
+    }
+  ],
+  "cover_file": "novel_1527191\\cover.jpg"
+}

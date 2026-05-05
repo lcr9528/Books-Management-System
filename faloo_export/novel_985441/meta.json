@@ -1,0 +1,82 @@
+{
+  "novel_id": "985441",
+  "title": "如花在野，温柔热烈",
+  "author": "一捻生秋",
+  "cover_url": "http://img.faloo.com/novel/images/cover/498x705.jpg",
+  "toc_url": "https://b.faloo.com/html_985_985441/",
+  "category_main": "青春校园",
+  "category_sub": "菁菁校园",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_985_985441/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 8,
+  "intro_file": "novel_985441\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章：不语",
+      "file": "novel_985441\\chapters\\0001_第一章：不语.txt",
+      "page_title": "如花在野，温柔热烈   第一章：不语"
+    },
+    {
+      "index": 3,
+      "sort_order": 2,
+      "toc_title": "第三章：盛夏中的玫瑰",
+      "file": "novel_985441\\chapters\\0002_第三章：盛夏中的玫瑰.txt",
+      "page_title": "如花在野，温柔热烈   第三章：盛夏中的玫瑰"
+    },
+    {
+      "index": 4,
+      "sort_order": 3,
+      "toc_title": "第四章：月是寂寞的眼",
+      "file": "novel_985441\\chapters\\0003_第四章：月是寂寞的眼.txt",
+      "page_title": "如花在野，温柔热烈   第四章：月是寂寞的眼"
+    },
+    {
+      "index": 5,
+      "sort_order": 4,
+      "toc_title": "第五章：胭脂水粉半遮面",
+      "file": "novel_985441\\chapters\\0004_第五章：胭脂水粉半遮面.txt",
+      "page_title": "如花在野，温柔热烈   第五章：胭脂水粉半遮面"
+    },
+    {
+      "index": 6,
+      "sort_order": 5,
+      "toc_title": "第六章：鲜花与牛粪",
+      "file": "novel_985441\\chapters\\0005_第六章：鲜花与牛粪.txt",
+      "page_title": "如花在野，温柔热烈   第六章：鲜花与牛粪"
+    },
+    {
+      "index": 7,
+      "sort_order": 6,
+      "toc_title": "第七章：本来无一物，处处惹尘埃",
+      "file": "novel_985441\\chapters\\0006_第七章：本来无一物，处处惹尘埃.txt",
+      "page_title": "如花在野，温柔热烈   第七章：本来无一物，处处惹尘埃"
+    },
+    {
+      "index": 8,
+      "sort_order": 7,
+      "toc_title": "第八章：冬去春来",
+      "file": "novel_985441\\chapters\\0007_第八章：冬去春来.txt",
+      "page_title": "如花在野，温柔热烈   第八章：冬去春来"
+    },
+    {
+      "index": 9,
+      "sort_order": 8,
+      "toc_title": "第九章：春来发几枝",
+      "file": "novel_985441\\chapters\\0008_第九章：春来发几枝.txt",
+      "page_title": "如花在野，温柔热烈   第九章：春来发几枝"
+    },
+    {
+      "index": 10,
+      "sort_order": 9,
+      "toc_title": "第十章：羞答答的玫瑰静悄悄地开",
+      "file": "novel_985441\\chapters\\0009_第十章：羞答答的玫瑰静悄悄地开.txt",
+      "page_title": "如花在野，温柔热烈   第十章：羞答答的玫瑰静悄悄地开"
+    }
+  ],
+  "cover_file": "novel_985441\\cover.jpg"
+}

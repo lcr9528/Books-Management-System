@@ -1,0 +1,103 @@
+{
+  "novel_id": "943991",
+  "title": "因梦而行",
+  "author": "墨羲尘",
+  "cover_url": "http://img.faloo.com/novel/images/cover/498x705.jpg",
+  "toc_url": "https://b.faloo.com/html_943_943991/",
+  "category_main": "青春校园",
+  "category_sub": "菁菁校园",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_943_943991/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 12,
+  "intro_file": "novel_943991\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 梦起",
+      "file": "novel_943991\\chapters\\0001_第一章 梦起.txt",
+      "page_title": "因梦而行   第一章 梦起"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 抉择",
+      "file": "novel_943991\\chapters\\0002_第二章 抉择.txt",
+      "page_title": "因梦而行   第二章 抉择"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章  新",
+      "file": "novel_943991\\chapters\\0003_第三章 新.txt",
+      "page_title": "因梦而行   第三章 新"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 比赛",
+      "file": "novel_943991\\chapters\\0004_第四章 比赛.txt",
+      "page_title": "因梦而行   第四章 比赛"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章  取胜",
+      "file": "novel_943991\\chapters\\0005_第五章 取胜.txt",
+      "page_title": "因梦而行   第五章 取胜"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第六章 背影",
+      "file": "novel_943991\\chapters\\0006_第六章 背影.txt",
+      "page_title": "因梦而行   第六章 背影"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第七章  激怒",
+      "file": "novel_943991\\chapters\\0007_第七章 激怒.txt",
+      "page_title": "因梦而行   第七章 激怒"
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "第八章  挫折",
+      "file": "novel_943991\\chapters\\0008_第八章 挫折.txt",
+      "page_title": "因梦而行   第八章 挫折"
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "第九章 晨练",
+      "file": "novel_943991\\chapters\\0009_第九章 晨练.txt",
+      "page_title": "因梦而行   第九章 晨练"
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "第十章 考验",
+      "file": "novel_943991\\chapters\\0010_第十章 考验.txt",
+      "page_title": "因梦而行   第十章 考验"
+    },
+    {
+      "index": 11,
+      "sort_order": 11,
+      "toc_title": "第十一章  欺压",
+      "file": "novel_943991\\chapters\\0011_第十一章 欺压.txt",
+      "page_title": "因梦而行   第十一章 欺压"
+    },
+    {
+      "index": 12,
+      "sort_order": 12,
+      "toc_title": "第十二章 插班生",
+      "file": "novel_943991\\chapters\\0012_第十二章 插班生.txt",
+      "page_title": "因梦而行   第十二章 插班生"
+    }
+  ],
+  "cover_file": "novel_943991\\cover.jpg"
+}

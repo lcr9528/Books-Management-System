@@ -1,0 +1,89 @@
+{
+  "novel_id": "1507092",
+  "title": "民国：小六子，我才是东北王！",
+  "author": "高考每次都满分",
+  "cover_url": "http://img.faloo.com/Novel/498x705/1/1615/001615656.jpg",
+  "toc_url": "https://b.faloo.com/html_1507_1507092/",
+  "category_main": "军事历史",
+  "category_sub": "穿越时空",
+  "chapter_count_requested": 10,
+  "toc_pages": [
+    "https://b.faloo.com/html_1507_1507092/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 677,
+  "intro_file": "novel_1507092\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第1章 张学礼回国，大阅兵商城系统！",
+      "file": "novel_1507092\\chapters\\0001_第1章 张学礼回国，大阅兵商城系统！.txt",
+      "page_title": "民国：小六子，我才是东北王！   第1章 张学礼回国，大阅兵商城系统！"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第2章 未来打算",
+      "file": "novel_1507092\\chapters\\0002_第2章 未来打算.txt",
+      "page_title": "民国：小六子，我才是东北王！   第2章 未来打算"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第3章 敲打杨宇霆！",
+      "file": "novel_1507092\\chapters\\0003_第3章 敲打杨宇霆！.txt",
+      "page_title": "民国：小六子，我才是东北王！   第3章 敲打杨宇霆！"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第4章 东北四省副巡阅使！",
+      "file": "novel_1507092\\chapters\\0004_第4章 东北四省副巡阅使！.txt",
+      "page_title": "民国：小六子，我才是东北王！   第4章 东北四省副巡阅使！"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第5章 通电全国，新任东北王！",
+      "file": "novel_1507092\\chapters\\0005_第5章 通电全国，新任东北王！.txt",
+      "page_title": "民国：小六子，我才是东北王！   第5章 通电全国，新任东北王！"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第6章 各方反应！",
+      "file": "novel_1507092\\chapters\\0006_第6章 各方反应！.txt",
+      "page_title": "民国：小六子，我才是东北王！   第6章 各方反应！"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第7章 关东军盯上了张学礼！",
+      "file": "novel_1507092\\chapters\\0007_第7章 关东军盯上了张学礼！.txt",
+      "page_title": "民国：小六子，我才是东北王！   第7章 关东军盯上了张学礼！"
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "第8章 奉系二代聚首！",
+      "file": "novel_1507092\\chapters\\0008_第8章 奉系二代聚首！.txt",
+      "page_title": "民国：小六子，我才是东北王！   第8章 奉系二代聚首！"
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "第9章 创办海、陆、空三所军校！",
+      "file": "novel_1507092\\chapters\\0009_第9章 创办海、陆、空三所军校！.txt",
+      "page_title": "民国：小六子，我才是东北王！   第9章 创办海、陆、空三所军校！"
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "第10章 《东北日报》+辽东社！",
+      "file": "novel_1507092\\chapters\\0010_第10章 《东北日报》+辽东社！.txt",
+      "page_title": "民国：小六子，我才是东北王！   第10章 《东北日报》+辽东社！"
+    }
+  ],
+  "cover_file": "novel_1507092\\cover.jpg"
+}

@@ -1,0 +1,47 @@
+{
+  "novel_id": "1526360",
+  "title": "第七年夏天",
+  "author": "初辞鸢",
+  "cover_url": "http://img.faloo.com/Novel/498x705/1/1634/001634011.jpg",
+  "toc_url": "https://b.faloo.com/html_1526_1526360/",
+  "category_main": "青春校园",
+  "category_sub": "校园言情",
+  "chapter_count_requested": 10,
+  "toc_pages": [
+    "https://b.faloo.com/html_1526_1526360/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 4,
+  "intro_file": "novel_1526360\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 ・ 修麦克风的那个女生",
+      "file": "novel_1526360\\chapters\\0001_第一章 ・ 修麦克风的那个女生.txt",
+      "page_title": "第七年夏天   第一章 ・ 修麦克风的那个女生"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 ・ FM 107.2",
+      "file": "novel_1526360\\chapters\\0002_第二章 ・ FM 107.2.txt",
+      "page_title": "第七年夏天   第二章 ・ FM 107.2"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章周一的频率",
+      "file": "novel_1526360\\chapters\\0003_第三章周一的频率.txt",
+      "page_title": "第七年夏天   第三章周一的频率"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章梧桐叶的背面",
+      "file": "novel_1526360\\chapters\\0004_第四章梧桐叶的背面.txt",
+      "page_title": "第七年夏天   第四章梧桐叶的背面"
+    }
+  ],
+  "cover_file": "novel_1526360\\cover.jpg"
+}

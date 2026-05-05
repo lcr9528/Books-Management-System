@@ -1,0 +1,145 @@
+{
+  "novel_id": "1527307",
+  "title": "开局被活埋，我觉醒了读心术",
+  "author": "清河分流",
+  "cover_url": "http://img.faloo.com/novel/images/cover/498x705.jpg",
+  "toc_url": "https://b.faloo.com/html_1527_1527307/",
+  "category_main": "玄幻奇幻",
+  "category_sub": "东方玄幻",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_1527_1527307/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 8,
+  "intro_file": "novel_1527307\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 活埋",
+      "file": "novel_1527307\\chapters\\0001_第一章 活埋.txt",
+      "page_title": "开局被活埋，我觉醒了读心术   第一章 活埋"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 觉醒",
+      "file": "novel_1527307\\chapters\\0002_第二章 觉醒.txt",
+      "page_title": ""
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 反杀",
+      "file": "novel_1527307\\chapters\\0003_第三章 反杀.txt",
+      "page_title": ""
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 上钩",
+      "file": "novel_1527307\\chapters\\0004_第四章 上钩.txt",
+      "page_title": ""
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章 暗棋",
+      "file": "novel_1527307\\chapters\\0005_第五章 暗棋.txt",
+      "page_title": ""
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第六章 崩盘",
+      "file": "novel_1527307\\chapters\\0006_第六章 崩盘.txt",
+      "page_title": ""
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第七章 夺佩",
+      "file": "novel_1527307\\chapters\\0007_第七章 夺佩.txt",
+      "page_title": ""
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "第八章 真相",
+      "file": "novel_1527307\\chapters\\0008_第八章 真相.txt",
+      "page_title": ""
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "第九章 复仇",
+      "file": "novel_1527307\\chapters\\0009_第九章 复仇.txt",
+      "page_title": ""
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "第十章 宝藏",
+      "file": "novel_1527307\\chapters\\0010_第十章 宝藏.txt",
+      "page_title": ""
+    },
+    {
+      "index": 11,
+      "sort_order": 11,
+      "toc_title": "第十一章 首富之路",
+      "file": "novel_1527307\\chapters\\0011_第十一章 首富之路.txt",
+      "page_title": ""
+    },
+    {
+      "index": 12,
+      "sort_order": 12,
+      "toc_title": "第十二章 帝国",
+      "file": "novel_1527307\\chapters\\0012_第十二章 帝国.txt",
+      "page_title": ""
+    },
+    {
+      "index": 13,
+      "sort_order": 13,
+      "toc_title": "第十三章 修仙",
+      "file": "novel_1527307\\chapters\\0013_第十三章 修仙.txt",
+      "page_title": ""
+    },
+    {
+      "index": 14,
+      "sort_order": 14,
+      "toc_title": "第十四章 万界",
+      "file": "novel_1527307\\chapters\\0014_第十四章 万界.txt",
+      "page_title": ""
+    },
+    {
+      "index": 15,
+      "sort_order": 15,
+      "toc_title": "第十五章 新生",
+      "file": "novel_1527307\\chapters\\0015_第十五章 新生.txt",
+      "page_title": ""
+    },
+    {
+      "index": 16,
+      "sort_order": 16,
+      "toc_title": "第十六章 重生",
+      "file": "novel_1527307\\chapters\\0016_第十六章 重生.txt",
+      "page_title": ""
+    },
+    {
+      "index": 17,
+      "sort_order": 17,
+      "toc_title": "第十七章 守护",
+      "file": "novel_1527307\\chapters\\0017_第十七章 守护.txt",
+      "page_title": ""
+    },
+    {
+      "index": 18,
+      "sort_order": 18,
+      "toc_title": "第十八章 清算",
+      "file": "novel_1527307\\chapters\\0018_第十八章 清算.txt",
+      "page_title": ""
+    }
+  ],
+  "cover_file": "novel_1527307\\cover.jpg"
+}

@@ -1,0 +1,68 @@
+{
+  "novel_id": "1162302",
+  "title": "叶落不语却知秋",
+  "author": "秋风不语",
+  "cover_url": "http://img.faloo.com/novel/images/cover/498x705.jpg",
+  "toc_url": "https://b.faloo.com/html_1162_1162302/",
+  "category_main": "青春校园",
+  "category_sub": "菁菁校园",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_1162_1162302/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 12,
+  "intro_file": "novel_1162302\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 2,
+      "sort_order": 1,
+      "toc_title": "第一章，归来",
+      "file": "novel_1162302\\chapters\\0001_第一章，归来.txt",
+      "page_title": "叶落不语却知秋   第一章，归来"
+    },
+    {
+      "index": 4,
+      "sort_order": 2,
+      "toc_title": "第二章，遇见",
+      "file": "novel_1162302\\chapters\\0002_第二章，遇见.txt",
+      "page_title": "叶落不语却知秋   第二章，遇见"
+    },
+    {
+      "index": 5,
+      "sort_order": 3,
+      "toc_title": "第三章，故事",
+      "file": "novel_1162302\\chapters\\0003_第三章，故事.txt",
+      "page_title": "叶落不语却知秋   第三章，故事"
+    },
+    {
+      "index": 7,
+      "sort_order": 4,
+      "toc_title": "第四章，挨打",
+      "file": "novel_1162302\\chapters\\0004_第四章，挨打.txt",
+      "page_title": "叶落不语却知秋   第四章，挨打"
+    },
+    {
+      "index": 9,
+      "sort_order": 5,
+      "toc_title": "第三章，故事（漏掉的此章节）",
+      "file": "novel_1162302\\chapters\\0005_第三章，故事（漏掉的此章节）.txt",
+      "page_title": "叶落不语却知秋   第三章，故事（漏掉的此章节）"
+    },
+    {
+      "index": 10,
+      "sort_order": 6,
+      "toc_title": "第五章，懂事",
+      "file": "novel_1162302\\chapters\\0006_第五章，懂事.txt",
+      "page_title": "叶落不语却知秋   第五章，懂事"
+    },
+    {
+      "index": 12,
+      "sort_order": 7,
+      "toc_title": "第六章 上梁",
+      "file": "novel_1162302\\chapters\\0007_第六章 上梁.txt",
+      "page_title": "叶落不语却知秋   第六章 上梁"
+    }
+  ],
+  "cover_file": "novel_1162302\\cover.jpg"
+}

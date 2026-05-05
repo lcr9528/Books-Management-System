@@ -1,0 +1,61 @@
+{
+  "novel_id": "928211",
+  "title": "我的学生震惊了全世界",
+  "author": "张三三",
+  "cover_url": "http://img.faloo.com/Novel/498x705/0/633/000633420.jpg",
+  "toc_url": "https://b.faloo.com/html_928_928211/",
+  "category_main": "青春校园",
+  "category_sub": "菁菁校园",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_928_928211/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 6,
+  "intro_file": "novel_928211\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 陆离离，救命啊【求鲜花】",
+      "file": "novel_928211\\chapters\\0001_第一章 陆离离，救命啊【求鲜花】.txt",
+      "page_title": "我的学生震惊了全世界   第一章 陆离离，救命啊【求鲜花】"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 不对劲，绝对不对劲【求评价票】",
+      "file": "novel_928211\\chapters\\0002_第二章 不对劲，绝对不对劲【求评价票】.txt",
+      "page_title": "我的学生震惊了全世界   第二章 不对劲，绝对不对劲【求评价票】"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 从窗户一跃而下的身影【求月票】",
+      "file": "novel_928211\\chapters\\0003_第三章 从窗户一跃而下的身影【求月票】.txt",
+      "page_title": "我的学生震惊了全世界   第三章 从窗户一跃而下的身影【求月票】"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 少女，做个选择吧【求收藏】",
+      "file": "novel_928211\\chapters\\0004_第四章 少女，做个选择吧【求收藏】.txt",
+      "page_title": "我的学生震惊了全世界   第四章 少女，做个选择吧【求收藏】"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章 放心吧，不会忘的【求书评】",
+      "file": "novel_928211\\chapters\\0005_第五章 放心吧，不会忘的【求书评】.txt",
+      "page_title": ""
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第六章 你要学死啊？",
+      "file": "novel_928211\\chapters\\0006_第六章 你要学死啊？.txt",
+      "page_title": ""
+    }
+  ],
+  "cover_file": "novel_928211\\cover.jpg"
+}

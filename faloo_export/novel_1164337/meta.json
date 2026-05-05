@@ -1,0 +1,61 @@
+{
+  "novel_id": "1164337",
+  "title": "我靠小说称霸都市",
+  "author": "爱笑的小鱼干",
+  "cover_url": "http://img.faloo.com/Novel/498x705/0/860/000860776.jpg",
+  "toc_url": "https://b.faloo.com/html_1164_1164337/",
+  "category_main": "青春校园",
+  "category_sub": "菁菁校园",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_1164_1164337/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 6,
+  "intro_file": "novel_1164337\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 乐极生悲",
+      "file": "novel_1164337\\chapters\\0001_第一章 乐极生悲.txt",
+      "page_title": "我靠小说称霸都市   第一章 乐极生悲"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 登顶巅峰",
+      "file": "novel_1164337\\chapters\\0002_第二章 登顶巅峰.txt",
+      "page_title": "我靠小说称霸都市   第二章 登顶巅峰"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 喜提三系",
+      "file": "novel_1164337\\chapters\\0003_第三章 喜提三系.txt",
+      "page_title": "我靠小说称霸都市   第三章 喜提三系"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 轻而易举",
+      "file": "novel_1164337\\chapters\\0004_第四章 轻而易举.txt",
+      "page_title": "我靠小说称霸都市   第四章 轻而易举"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章 呆若木鸡",
+      "file": "novel_1164337\\chapters\\0005_第五章 呆若木鸡.txt",
+      "page_title": "我靠小说称霸都市   第五章 呆若木鸡"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第六章 家喻户晓",
+      "file": "novel_1164337\\chapters\\0006_第六章 家喻户晓.txt",
+      "page_title": "我靠小说称霸都市   第六章 家喻户晓"
+    }
+  ],
+  "cover_file": "novel_1164337\\cover.jpg"
+}

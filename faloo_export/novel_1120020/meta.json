@@ -1,0 +1,89 @@
+{
+  "novel_id": "1120020",
+  "title": "你好阿璐，再见阿璐",
+  "author": "木木木木木子茂",
+  "cover_url": "http://img.faloo.com/Novel/498x705/0/819/000819339.jpg",
+  "toc_url": "https://b.faloo.com/html_1120_1120020/",
+  "category_main": "青春校园",
+  "category_sub": "校园言情",
+  "chapter_count_requested": 10,
+  "toc_pages": [
+    "https://b.faloo.com/html_1120_1120020/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 400,
+  "intro_file": "novel_1120020\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章",
+      "file": "novel_1120020\\chapters\\0001_第一章.txt",
+      "page_title": "你好阿璐，再见阿璐   第一章"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章",
+      "file": "novel_1120020\\chapters\\0002_第二章.txt",
+      "page_title": "你好阿璐，再见阿璐   第二章"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章",
+      "file": "novel_1120020\\chapters\\0003_第三章.txt",
+      "page_title": "你好阿璐，再见阿璐   第三章"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章",
+      "file": "novel_1120020\\chapters\\0004_第四章.txt",
+      "page_title": "你好阿璐，再见阿璐   第四章"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章",
+      "file": "novel_1120020\\chapters\\0005_第五章.txt",
+      "page_title": "你好阿璐，再见阿璐   第五章"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第六章",
+      "file": "novel_1120020\\chapters\\0006_第六章.txt",
+      "page_title": "你好阿璐，再见阿璐   第六章"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第七章",
+      "file": "novel_1120020\\chapters\\0007_第七章.txt",
+      "page_title": "你好阿璐，再见阿璐   第七章"
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "第八章",
+      "file": "novel_1120020\\chapters\\0008_第八章.txt",
+      "page_title": "你好阿璐，再见阿璐   第八章"
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "第九章",
+      "file": "novel_1120020\\chapters\\0009_第九章.txt",
+      "page_title": "你好阿璐，再见阿璐   第九章"
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "第十章",
+      "file": "novel_1120020\\chapters\\0010_第十章.txt",
+      "page_title": "你好阿璐，再见阿璐   第十章"
+    }
+  ],
+  "cover_file": "novel_1120020\\cover.jpg"
+}

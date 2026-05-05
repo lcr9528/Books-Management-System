@@ -1,0 +1,229 @@
+{
+  "novel_id": "1520308",
+  "title": "青冥世谱",
+  "author": "兵戈小语",
+  "cover_url": "http://img.faloo.com/Novel/498x705/1/1627/001627967.jpg",
+  "toc_url": "https://b.faloo.com/html_1520_1520308/",
+  "category_main": "玄幻奇幻",
+  "category_sub": "东方玄幻",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_1520_1520308/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 31,
+  "intro_file": "novel_1520308\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 残霜域的雪",
+      "file": "novel_1520308\\chapters\\0001_第一章 残霜域的雪.txt",
+      "page_title": "青冥世谱   第一章 残霜域的雪"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 七口人的晚餐",
+      "file": "novel_1520308\\chapters\\0002_第二章 七口人的晚餐.txt",
+      "page_title": "青冥世谱   第二章 七口人的晚餐"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 唯一的功法",
+      "file": "novel_1520308\\chapters\\0003_第三章 唯一的功法.txt",
+      "page_title": "青冥世谱   第三章 唯一的功法"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 货郎来了",
+      "file": "novel_1520308\\chapters\\0004_第四章 货郎来了.txt",
+      "page_title": "青冥世谱   第四章 货郎来了"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章 三个铜板",
+      "file": "novel_1520308\\chapters\\0005_第五章 三个铜板.txt",
+      "page_title": "青冥世谱   第五章 三个铜板"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第六章 深夜的抚摸",
+      "file": "novel_1520308\\chapters\\0006_第六章 深夜的抚摸.txt",
+      "page_title": ""
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第七章 林见深的嘲讽",
+      "file": "novel_1520308\\chapters\\0007_第七章 林见深的嘲讽.txt",
+      "page_title": ""
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "第八章 沉睡的呼吸",
+      "file": "novel_1520308\\chapters\\0008_第八章 沉睡的呼吸.txt",
+      "page_title": ""
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "第九章 林青冥",
+      "file": "novel_1520308\\chapters\\0009_第九章 林青冥.txt",
+      "page_title": ""
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "第十章 入梦",
+      "file": "novel_1520308\\chapters\\0010_第十章 入梦.txt",
+      "page_title": ""
+    },
+    {
+      "index": 11,
+      "sort_order": 11,
+      "toc_title": "第十一章 马蹄声",
+      "file": "novel_1520308\\chapters\\0011_第十一章 马蹄声.txt",
+      "page_title": ""
+    },
+    {
+      "index": 12,
+      "sort_order": 12,
+      "toc_title": "第十二章 抉择",
+      "file": "novel_1520308\\chapters\\0012_第十二章 抉择.txt",
+      "page_title": ""
+    },
+    {
+      "index": 13,
+      "sort_order": 13,
+      "toc_title": "第十三章 青冥旧事",
+      "file": "novel_1520308\\chapters\\0013_第十三章 青冥旧事.txt",
+      "page_title": ""
+    },
+    {
+      "index": 14,
+      "sort_order": 14,
+      "toc_title": "第十四章 血脉",
+      "file": "novel_1520308\\chapters\\0014_第十四章 血脉.txt",
+      "page_title": ""
+    },
+    {
+      "index": 15,
+      "sort_order": 15,
+      "toc_title": "第十五章 三天",
+      "file": "novel_1520308\\chapters\\0015_第十五章 三天.txt",
+      "page_title": ""
+    },
+    {
+      "index": 16,
+      "sort_order": 16,
+      "toc_title": "第十六章 老人站出来了",
+      "file": "novel_1520308\\chapters\\0016_第十六章 老人站出来了.txt",
+      "page_title": ""
+    },
+    {
+      "index": 17,
+      "sort_order": 17,
+      "toc_title": "第十七章 守拙的手",
+      "file": "novel_1520308\\chapters\\0017_第十七章 守拙的手.txt",
+      "page_title": ""
+    },
+    {
+      "index": 18,
+      "sort_order": 18,
+      "toc_title": "第十八章 山河的声音",
+      "file": "novel_1520308\\chapters\\0018_第十八章 山河的声音.txt",
+      "page_title": ""
+    },
+    {
+      "index": 19,
+      "sort_order": 19,
+      "toc_title": "第十九章 代价的警告",
+      "file": "novel_1520308\\chapters\\0019_第十九章 代价的警告.txt",
+      "page_title": ""
+    },
+    {
+      "index": 20,
+      "sort_order": 20,
+      "toc_title": "第二十章 点名",
+      "file": "novel_1520308\\chapters\\0020_第二十章 点名.txt",
+      "page_title": ""
+    },
+    {
+      "index": 21,
+      "sort_order": 21,
+      "toc_title": "第二十一章 守拙的夜",
+      "file": "novel_1520308\\chapters\\0021_第二十一章 守拙的夜.txt",
+      "page_title": ""
+    },
+    {
+      "index": 22,
+      "sort_order": 22,
+      "toc_title": "第二十二章 大限",
+      "file": "novel_1520308\\chapters\\0022_第二十二章 大限.txt",
+      "page_title": ""
+    },
+    {
+      "index": 23,
+      "sort_order": 23,
+      "toc_title": "第二十三章 对峙",
+      "file": "novel_1520308\\chapters\\0023_第二十三章 对峙.txt",
+      "page_title": ""
+    },
+    {
+      "index": 24,
+      "sort_order": 24,
+      "toc_title": "第二十四章 鼎鸣",
+      "file": "novel_1520308\\chapters\\0024_第二十四章 鼎鸣.txt",
+      "page_title": ""
+    },
+    {
+      "index": 25,
+      "sort_order": 25,
+      "toc_title": "第二十五章 惊退",
+      "file": "novel_1520308\\chapters\\0025_第二十五章 惊退.txt",
+      "page_title": ""
+    },
+    {
+      "index": 26,
+      "sort_order": 26,
+      "toc_title": "第二十六章 劫后余生",
+      "file": "novel_1520308\\chapters\\0026_第二十六章 劫后余生.txt",
+      "page_title": "青冥世谱   第二十六章 劫后余生"
+    },
+    {
+      "index": 27,
+      "sort_order": 27,
+      "toc_title": "第二十七章 域主府的目光",
+      "file": "novel_1520308\\chapters\\0027_第二十七章 域主府的目光.txt",
+      "page_title": "青冥世谱   第二十七章 域主府的目光"
+    },
+    {
+      "index": 28,
+      "sort_order": 28,
+      "toc_title": "第二十八章 井水浑了",
+      "file": "novel_1520308\\chapters\\0028_第二十八章 井水浑了.txt",
+      "page_title": "青冥世谱   第二十八章 井水浑了"
+    },
+    {
+      "index": 29,
+      "sort_order": 29,
+      "toc_title": "第二十九章 北山寻水",
+      "file": "novel_1520308\\chapters\\0029_第二十九章 北山寻水.txt",
+      "page_title": "青冥世谱   第二十九章 北山寻水"
+    },
+    {
+      "index": 30,
+      "sort_order": 30,
+      "toc_title": "第三十章 邻村来人",
+      "file": "novel_1520308\\chapters\\0030_第三十章 邻村来人.txt",
+      "page_title": "青冥世谱   第三十章 邻村来人"
+    }
+  ],
+  "cover_file": "novel_1520308\\cover.jpg"
+}

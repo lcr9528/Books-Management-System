@@ -1,0 +1,89 @@
+{
+  "novel_id": "563542",
+  "title": "我能一键修炼",
+  "author": "青太白",
+  "cover_url": "http://img.faloo.com/Novel/498x705/0/355/000355276.jpg",
+  "toc_url": "https://b.faloo.com/html_563_563542/",
+  "category_main": "玄幻奇幻",
+  "category_sub": "转世重生",
+  "chapter_count_requested": 10,
+  "toc_pages": [
+    "https://b.faloo.com/html_563_563542/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 10761,
+  "intro_file": "novel_563542\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 一键修炼空间！【求鲜花收藏评价！】",
+      "file": "novel_563542\\chapters\\0001_第一章 一键修炼空间！【求鲜花收藏评价！】.txt",
+      "page_title": "我能一键修炼   第一章 一键修炼空间！【求鲜花收藏评价！】"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 玩着玩着就突破了！【求鲜花收藏评价！】",
+      "file": "novel_563542\\chapters\\0002_第二章 玩着玩着就突破了！【求鲜花收藏评价！】.txt",
+      "page_title": "我能一键修炼   第二章 玩着玩着就突破了！【求鲜花收藏评价！】"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 什么？他又突破了？【求鲜花收藏评价！】",
+      "file": "novel_563542\\chapters\\0003_第三章 什么？他又突破了？【求鲜花收藏评价！】.txt",
+      "page_title": "我能一键修炼   第三章 什么？他又突破了？【求鲜花收藏评价！】"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "更新规则",
+      "file": "novel_563542\\chapters\\0004_更新规则.txt",
+      "page_title": "我能一键修炼   更新规则"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第四章 他tmd居然真的又晋升了！【求鲜花收藏评价！】",
+      "file": "novel_563542\\chapters\\0005_第四章 他tmd居然真的又晋升了！【求鲜花收藏评价！】.txt",
+      "page_title": "我能一键修炼   第四章 他tmd居然真的又晋升了！【求鲜花收藏评价！】"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第五章 100万灵币！【求鲜花收藏评价！】",
+      "file": "novel_563542\\chapters\\0006_第五章 100万灵币！【求鲜花收藏评价！】.txt",
+      "page_title": "我能一键修炼   第五章 100万灵币！【求鲜花收藏评价！】"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第六章 一键练功空间！【求鲜花收藏评价！】",
+      "file": "novel_563542\\chapters\\0007_第六章 一键练功空间！【求鲜花收藏评价！】.txt",
+      "page_title": "我能一键修炼   第六章 一键练功空间！【求鲜花收藏评价！】"
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "第七章 同时升到2级！【求鲜花收藏评价！】",
+      "file": "novel_563542\\chapters\\0008_第七章 同时升到2级！【求鲜花收藏评价！】.txt",
+      "page_title": "我能一键修炼   第七章 同时升到2级！【求鲜花收藏评价！】"
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "第八章 入微级功法！【求鲜花收藏评价！】",
+      "file": "novel_563542\\chapters\\0009_第八章 入微级功法！【求鲜花收藏评价！】.txt",
+      "page_title": "我能一键修炼   第八章 入微级功法！【求鲜花收藏评价！】"
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "第九章 一天领悟一部功法！【求鲜花收藏评价！】",
+      "file": "novel_563542\\chapters\\0010_第九章 一天领悟一部功法！【求鲜花收藏评价！】.txt",
+      "page_title": "我能一键修炼   第九章 一天领悟一部功法！【求鲜花收藏评价！】"
+    }
+  ],
+  "cover_file": "novel_563542\\cover.jpg"
+}

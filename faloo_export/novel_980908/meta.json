@@ -1,0 +1,61 @@
+{
+  "novel_id": "980908",
+  "title": "终极十班：我的中学生活",
+  "author": "少辰",
+  "cover_url": "http://img.faloo.com/novel/images/cover/498x705.jpg",
+  "toc_url": "https://b.faloo.com/html_980_980908/",
+  "category_main": "青春校园",
+  "category_sub": "菁菁校园",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_980_980908/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 6,
+  "intro_file": "novel_980908\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 报名进行时",
+      "file": "novel_980908\\chapters\\0001_第一章 报名进行时.txt",
+      "page_title": "终极十班：我的中学生活   第一章 报名进行时"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 集结完毕，军训开幕",
+      "file": "novel_980908\\chapters\\0002_第二章 集结完毕，军训开幕.txt",
+      "page_title": "终极十班：我的中学生活   第二章 集结完毕，军训开幕"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 校长发言",
+      "file": "novel_980908\\chapters\\0003_第三章 校长发言.txt",
+      "page_title": "终极十班：我的中学生活   第三章 校长发言"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 闭幕式",
+      "file": "novel_980908\\chapters\\0004_第四章 闭幕式.txt",
+      "page_title": "终极十班：我的中学生活   第四章 闭幕式"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "作者的话&作品须知（请勿跳过）",
+      "file": "novel_980908\\chapters\\0005_作者的话&作品须知（请勿跳过）.txt",
+      "page_title": "终极十班：我的中学生活   作者的话&作品须知（请勿跳过）"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第五章 晚自习前的惬意",
+      "file": "novel_980908\\chapters\\0006_第五章 晚自习前的惬意.txt",
+      "page_title": "终极十班：我的中学生活   第五章 晚自习前的惬意"
+    }
+  ],
+  "cover_file": "novel_980908\\cover.jpg"
+}

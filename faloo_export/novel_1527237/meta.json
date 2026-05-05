@@ -1,0 +1,159 @@
+{
+  "novel_id": "1527237",
+  "title": "裂隙修神",
+  "author": "一只会撒娇的狗",
+  "cover_url": "http://img.faloo.com/Novel/498x705/1/1634/001634917.jpg",
+  "toc_url": "https://b.faloo.com/html_1527_1527237/",
+  "category_main": "玄幻奇幻",
+  "category_sub": "东方玄幻",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_1527_1527237/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 19,
+  "intro_file": "novel_1527237\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "天裂的遗孤",
+      "file": "novel_1527237\\chapters\\0001_天裂的遗孤.txt",
+      "page_title": "裂隙修神   天裂的遗孤"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "废墟之上",
+      "file": "novel_1527237\\chapters\\0002_废墟之上.txt",
+      "page_title": "裂隙修神   废墟之上"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "东海壁垒",
+      "file": "novel_1527237\\chapters\\0003_东海壁垒.txt",
+      "page_title": "裂隙修神   东海壁垒"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "暗流",
+      "file": "novel_1527237\\chapters\\0004_暗流.txt",
+      "page_title": "裂隙修神   暗流"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第一块磨刀石",
+      "file": "novel_1527237\\chapters\\0005_第一块磨刀石.txt",
+      "page_title": "裂隙修神   第一块磨刀石"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "预备班的逆袭",
+      "file": "novel_1527237\\chapters\\0006_预备班的逆袭.txt",
+      "page_title": "裂隙修神   预备班的逆袭"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "正式学员",
+      "file": "novel_1527237\\chapters\\0007_正式学员.txt",
+      "page_title": "裂隙修神   正式学员"
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "逐出与归来",
+      "file": "novel_1527237\\chapters\\0008_逐出与归来.txt",
+      "page_title": "裂隙修神   逐出与归来"
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "废墟猎人",
+      "file": "novel_1527237\\chapters\\0009_废墟猎人.txt",
+      "page_title": "裂隙修神   废墟猎人"
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "影猫",
+      "file": "novel_1527237\\chapters\\0010_影猫.txt",
+      "page_title": "裂隙修神   影猫"
+    },
+    {
+      "index": 11,
+      "sort_order": 11,
+      "toc_title": "第二转",
+      "file": "novel_1527237\\chapters\\0011_第二转.txt",
+      "page_title": "裂隙修神   第二转"
+    },
+    {
+      "index": 12,
+      "sort_order": 12,
+      "toc_title": "归来",
+      "file": "novel_1527237\\chapters\\0012_归来.txt",
+      "page_title": "裂隙修神   归来"
+    },
+    {
+      "index": 13,
+      "sort_order": 13,
+      "toc_title": "抽签夜",
+      "file": "novel_1527237\\chapters\\0013_抽签夜.txt",
+      "page_title": "裂隙修神   抽签夜"
+    },
+    {
+      "index": 14,
+      "sort_order": 14,
+      "toc_title": "擂台之上",
+      "file": "novel_1527237\\chapters\\0014_擂台之上.txt",
+      "page_title": "裂隙修神   擂台之上"
+    },
+    {
+      "index": 15,
+      "sort_order": 15,
+      "toc_title": "第十五章 交易",
+      "file": "novel_1527237\\chapters\\0015_第十五章 交易.txt",
+      "page_title": "裂隙修神   第十五章 交易"
+    },
+    {
+      "index": 16,
+      "sort_order": 16,
+      "toc_title": "第16章 遗迹消息",
+      "file": "novel_1527237\\chapters\\0016_第16章 遗迹消息.txt",
+      "page_title": "裂隙修神   第16章 遗迹消息"
+    },
+    {
+      "index": 17,
+      "sort_order": 17,
+      "toc_title": "第17章 组队出发",
+      "file": "novel_1527237\\chapters\\0017_第17章 组队出发.txt",
+      "page_title": "裂隙修神   第17章 组队出发"
+    },
+    {
+      "index": 18,
+      "sort_order": 18,
+      "toc_title": "第18章 入口之争",
+      "file": "novel_1527237\\chapters\\0018_第18章 入口之争.txt",
+      "page_title": "裂隙修神   第18章 入口之争"
+    },
+    {
+      "index": 19,
+      "sort_order": 19,
+      "toc_title": "第19章 通道机关与暗殿追击",
+      "file": "novel_1527237\\chapters\\0019_第19章 通道机关与暗殿追击.txt",
+      "page_title": "裂隙修神   第19章 通道机关与暗殿追击"
+    },
+    {
+      "index": 20,
+      "sort_order": 20,
+      "toc_title": "第19章 迷宫探索",
+      "file": "novel_1527237\\chapters\\0020_第19章 迷宫探索.txt",
+      "page_title": "裂隙修神   第19章 迷宫探索"
+    }
+  ],
+  "cover_file": "novel_1527237\\cover.jpg"
+}

@@ -1,0 +1,89 @@
+{
+  "novel_id": "1522775",
+  "title": "四合院：别惹我，我有真武洞天",
+  "author": "糯小丸",
+  "cover_url": "http://img.faloo.com/Novel/498x705/1/1630/001630577.jpg",
+  "toc_url": "https://b.faloo.com/html_1522_1522775/",
+  "category_main": "武侠仙侠",
+  "category_sub": "武侠修真",
+  "chapter_count_requested": 10,
+  "toc_pages": [
+    "https://b.faloo.com/html_1522_1522775/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 116,
+  "intro_file": "novel_1522775\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "1 成了另一个人",
+      "file": "novel_1522775\\chapters\\0001_1 成了另一个人.txt",
+      "page_title": "四合院：别惹我，我有真武洞天   1 成了另一个人"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "2 洞玄明心",
+      "file": "novel_1522775\\chapters\\0002_2 洞玄明心.txt",
+      "page_title": "四合院：别惹我，我有真武洞天   2 洞玄明心"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "3 系统，可有属性面板？",
+      "file": "novel_1522775\\chapters\\0003_3 系统，可有属性面板？.txt",
+      "page_title": "四合院：别惹我，我有真武洞天   3 系统，可有属性面板？"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "4 令人惊异的景象",
+      "file": "novel_1522775\\chapters\\0004_4 令人惊异的景象.txt",
+      "page_title": "四合院：别惹我，我有真武洞天   4 令人惊异的景象"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "5 小伙子手气真旺",
+      "file": "novel_1522775\\chapters\\0005_5 小伙子手气真旺.txt",
+      "page_title": ""
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "6 别怪我不客气",
+      "file": "novel_1522775\\chapters\\0006_6 别怪我不客气.txt",
+      "page_title": ""
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "7 浑身气得发颤",
+      "file": "novel_1522775\\chapters\\0007_7 浑身气得发颤.txt",
+      "page_title": ""
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "8 剩下的都归你们",
+      "file": "novel_1522775\\chapters\\0008_8 剩下的都归你们.txt",
+      "page_title": ""
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "9 小辈竟敢对长辈动手",
+      "file": "novel_1522775\\chapters\\0009_9 小辈竟敢对长辈动手.txt",
+      "page_title": ""
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "10 今天非教训你不可",
+      "file": "novel_1522775\\chapters\\0010_10 今天非教训你不可.txt",
+      "page_title": ""
+    }
+  ],
+  "cover_file": "novel_1522775\\cover.jpg"
+}

@@ -1,0 +1,47 @@
+{
+  "novel_id": "1158607",
+  "title": "科技向：改变人生剧本",
+  "author": "实验室能手",
+  "cover_url": "http://img.faloo.com/Novel/498x705/0/854/000854561.jpg",
+  "toc_url": "https://b.faloo.com/html_1158_1158607/",
+  "category_main": "青春校园",
+  "category_sub": "菁菁校园",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_1158_1158607/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 4,
+  "intro_file": "novel_1158607\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "001 考上大学，竟触发梦想成真系统？",
+      "file": "novel_1158607\\chapters\\0001_001 考上大学，竟触发梦想成真系统？.txt",
+      "page_title": "科技向：改变人生剧本   001 考上大学，竟触发梦想成真系统？"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "002 放弃学业做哥哥的陪练反被智商秒",
+      "file": "novel_1158607\\chapters\\0002_002 放弃学业做哥哥的陪练反被智商秒.txt",
+      "page_title": "科技向：改变人生剧本   002 放弃学业做哥哥的陪练反被智商秒"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "003 父母阻挠 无奈先行听话",
+      "file": "novel_1158607\\chapters\\0003_003 父母阻挠 无奈先行听话.txt",
+      "page_title": "科技向：改变人生剧本   003 父母阻挠 无奈先行听话"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "004 梦境升级 父母竟是最大的支持者",
+      "file": "novel_1158607\\chapters\\0004_004 梦境升级 父母竟是最大的支持者.txt",
+      "page_title": "科技向：改变人生剧本   004 梦境升级 父母竟是最大的支持者"
+    }
+  ],
+  "cover_file": "novel_1158607\\cover.jpg"
+}

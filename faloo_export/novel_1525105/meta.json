@@ -1,0 +1,54 @@
+{
+  "novel_id": "1525105",
+  "title": "镜破苍穹",
+  "author": "亿农",
+  "cover_url": "http://img.faloo.com/novel/images/cover/498x705.jpg",
+  "toc_url": "https://b.faloo.com/html_1525_1525105/",
+  "category_main": "玄幻奇幻",
+  "category_sub": "东方玄幻",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_1525_1525105/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 4,
+  "intro_file": "novel_1525105\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 三年杂役，炼气一层，天下皆欺我",
+      "file": "novel_1525105\\chapters\\0001_第一章 三年杂役，炼气一层，天下皆欺我.txt",
+      "page_title": "镜破苍穹   第一章 三年杂役，炼气一层，天下皆欺我"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 照世镜觉醒，废柴一夜变天骄",
+      "file": "novel_1525105\\chapters\\0002_第二章 照世镜觉醒，废柴一夜变天骄.txt",
+      "page_title": "镜破苍穹   第二章 照世镜觉醒，废柴一夜变天骄"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 圣女初邂逅，全场敬畏再无欺辱",
+      "file": "novel_1525105\\chapters\\0003_第三章 圣女初邂逅，全场敬畏再无欺辱.txt",
+      "page_title": "镜破苍穹   第三章 圣女初邂逅，全场敬畏再无欺辱"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 势利管事刁难，照世镜吞灵反杀",
+      "file": "novel_1525105\\chapters\\0004_第四章 势利管事刁难，照世镜吞灵反杀.txt",
+      "page_title": "镜破苍穹   第四章 势利管事刁难，照世镜吞灵反杀"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章 杂役院立威，内门长老注目",
+      "file": "novel_1525105\\chapters\\0005_第五章 杂役院立威，内门长老注目.txt",
+      "page_title": "镜破苍穹   第五章 杂役院立威，内门长老注目"
+    }
+  ],
+  "cover_file": "novel_1525105\\cover.jpg"
+}

@@ -1,0 +1,89 @@
+{
+  "novel_id": "1437760",
+  "title": "综武：人在襄阳，化身曹贼就变强",
+  "author": "满园春色关不住",
+  "cover_url": "http://img.faloo.com/Novel/498x705/1/1375/001375919.jpg",
+  "toc_url": "https://b.faloo.com/html_1437_1437760/",
+  "category_main": "武侠仙侠",
+  "category_sub": "武侠修真",
+  "chapter_count_requested": 10,
+  "toc_pages": [
+    "https://b.faloo.com/html_1437_1437760/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 845,
+  "intro_file": "novel_1437760\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 曹贼任务系统（新书发布1/10）",
+      "file": "novel_1437760\\chapters\\0001_第一章 曹贼任务系统（新书发布1_10）.txt",
+      "page_title": "综武：人在襄阳，化身曹贼就变强   第一章 曹贼任务系统（新书发布1/10）"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 不太正经的系统任务（新书发布2/10）",
+      "file": "novel_1437760\\chapters\\0002_第二章 不太正经的系统任务（新书发布2_10）.txt",
+      "page_title": "综武：人在襄阳，化身曹贼就变强   第二章 不太正经的系统任务（新书发布2/10）"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 黄蓉沐浴（新书发布3/10）",
+      "file": "novel_1437760\\chapters\\0003_第三章 黄蓉沐浴（新书发布3_10）.txt",
+      "page_title": "综武：人在襄阳，化身曹贼就变强   第三章 黄蓉沐浴（新书发布3/10）"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 西毒欧阳锋（新书发布4/10）",
+      "file": "novel_1437760\\chapters\\0004_第四章 西毒欧阳锋（新书发布4_10）.txt",
+      "page_title": "综武：人在襄阳，化身曹贼就变强   第四章 西毒欧阳锋（新书发布4/10）"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章 黄蓉的杀意（新书发布5/10）",
+      "file": "novel_1437760\\chapters\\0005_第五章 黄蓉的杀意（新书发布5_10）.txt",
+      "page_title": "综武：人在襄阳，化身曹贼就变强   第五章 黄蓉的杀意（新书发布5/10）"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第六章 五行阴阳诀（新书发布6/10）",
+      "file": "novel_1437760\\chapters\\0006_第六章 五行阴阳诀（新书发布6_10）.txt",
+      "page_title": "综武：人在襄阳，化身曹贼就变强   第六章 五行阴阳诀（新书发布6/10）"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第七章 “失窃”的珍宝（新书发布7/10）",
+      "file": "novel_1437760\\chapters\\0007_第七章 “失窃”的珍宝（新书发布7_10）.txt",
+      "page_title": "综武：人在襄阳，化身曹贼就变强   第七章 “失窃”的珍宝（新书发布7/10）"
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "第八章 将计就计（新书发布8/10）",
+      "file": "novel_1437760\\chapters\\0008_第八章 将计就计（新书发布8_10）.txt",
+      "page_title": "综武：人在襄阳，化身曹贼就变强   第八章 将计就计（新书发布8/10）"
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "第九章 暴怒的黄蓉（新书发布9/10）",
+      "file": "novel_1437760\\chapters\\0009_第九章 暴怒的黄蓉（新书发布9_10）.txt",
+      "page_title": "综武：人在襄阳，化身曹贼就变强   第九章 暴怒的黄蓉（新书发布9/10）"
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "第十章 赵敏的决心（新书发布10/10）",
+      "file": "novel_1437760\\chapters\\0010_第十章 赵敏的决心（新书发布10_10）.txt",
+      "page_title": "综武：人在襄阳，化身曹贼就变强   第十章 赵敏的决心（新书发布10/10）"
+    }
+  ],
+  "cover_file": "novel_1437760\\cover.jpg"
+}

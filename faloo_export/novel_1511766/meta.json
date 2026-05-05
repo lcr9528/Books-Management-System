@@ -1,0 +1,89 @@
+{
+  "novel_id": "1511766",
+  "title": "综武：我打爆所有排行榜",
+  "author": "昼司",
+  "cover_url": "http://img.faloo.com/Novel/498x705/1/1633/001633509.jpg",
+  "toc_url": "https://b.faloo.com/html_1511_1511766/",
+  "category_main": "武侠仙侠",
+  "category_sub": "武侠修真",
+  "chapter_count_requested": 10,
+  "toc_pages": [
+    "https://b.faloo.com/html_1511_1511766/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 482,
+  "intro_file": "novel_1511766\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第1章 这个世界有病！[图]",
+      "file": "novel_1511766\\chapters\\0001_第1章 这个世界有病！[图].txt",
+      "page_title": "综武：我打爆所有排行榜   第1章 这个世界有病！"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第2章 所有人都有病！[图]",
+      "file": "novel_1511766\\chapters\\0002_第2章 所有人都有病！[图].txt",
+      "page_title": "综武：我打爆所有排行榜   第2章 所有人都有病！"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第3章 金榜到达！[图]",
+      "file": "novel_1511766\\chapters\\0003_第3章 金榜到达！[图].txt",
+      "page_title": "综武：我打爆所有排行榜   第3章 金榜到达！"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第4章 融合世界！[图]",
+      "file": "novel_1511766\\chapters\\0004_第4章 融合世界！[图].txt",
+      "page_title": "综武：我打爆所有排行榜   第4章 融合世界！"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第5章 绝色榜登场！[图]",
+      "file": "novel_1511766\\chapters\\0005_第5章 绝色榜登场！[图].txt",
+      "page_title": "综武：我打爆所有排行榜   第5章 绝色榜登场！"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第6章 你身上已经插满翅膀！[图]",
+      "file": "novel_1511766\\chapters\\0006_第6章 你身上已经插满翅膀！[图].txt",
+      "page_title": ""
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第7章 前途一片光明！[图]",
+      "file": "novel_1511766\\chapters\\0007_第7章 前途一片光明！[图].txt",
+      "page_title": ""
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "感谢【空气鲸鱼】的月票和打赏！么么哒！",
+      "file": "novel_1511766\\chapters\\0008_感谢【空气鲸鱼】的月票和打赏！么么哒！.txt",
+      "page_title": ""
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "第8章 要不你还是来抢我好了！[图]",
+      "file": "novel_1511766\\chapters\\0009_第8章 要不你还是来抢我好了！[图].txt",
+      "page_title": ""
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "感谢【zr6..】月票",
+      "file": "novel_1511766\\chapters\\0010_感谢【zr6..】月票.txt",
+      "page_title": ""
+    }
+  ],
+  "cover_file": "novel_1511766\\cover.jpg"
+}

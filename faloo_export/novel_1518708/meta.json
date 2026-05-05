@@ -1,0 +1,89 @@
+{
+  "novel_id": "1518708",
+  "title": "同桌",
+  "author": "小鱼游走",
+  "cover_url": "http://img.faloo.com/novel/images/cover/498x705.jpg",
+  "toc_url": "https://b.faloo.com/html_1518_1518708/",
+  "category_main": "青春校园",
+  "category_sub": "校园言情",
+  "chapter_count_requested": 10,
+  "toc_pages": [
+    "https://b.faloo.com/html_1518_1518708/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 41,
+  "intro_file": "novel_1518708\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章 留级的缘由",
+      "file": "novel_1518708\\chapters\\0001_第一章 留级的缘由.txt",
+      "page_title": "同桌   第一章 留级的缘由"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章 如愿以偿",
+      "file": "novel_1518708\\chapters\\0002_第二章 如愿以偿.txt",
+      "page_title": "同桌   第二章 如愿以偿"
+    },
+    {
+      "index": 3,
+      "sort_order": 3,
+      "toc_title": "第三章 初来乍到",
+      "file": "novel_1518708\\chapters\\0003_第三章 初来乍到.txt",
+      "page_title": "同桌   第三章 初来乍到"
+    },
+    {
+      "index": 4,
+      "sort_order": 4,
+      "toc_title": "第四章 双重巧合",
+      "file": "novel_1518708\\chapters\\0004_第四章 双重巧合.txt",
+      "page_title": "同桌   第四章 双重巧合"
+    },
+    {
+      "index": 5,
+      "sort_order": 5,
+      "toc_title": "第五章 回到原点",
+      "file": "novel_1518708\\chapters\\0005_第五章 回到原点.txt",
+      "page_title": "同桌   第五章 回到原点"
+    },
+    {
+      "index": 6,
+      "sort_order": 6,
+      "toc_title": "第六章 冤家路窄",
+      "file": "novel_1518708\\chapters\\0006_第六章 冤家路窄.txt",
+      "page_title": "同桌   第六章 冤家路窄"
+    },
+    {
+      "index": 7,
+      "sort_order": 7,
+      "toc_title": "第七章 分宿舍",
+      "file": "novel_1518708\\chapters\\0007_第七章 分宿舍.txt",
+      "page_title": "同桌   第七章 分宿舍"
+    },
+    {
+      "index": 8,
+      "sort_order": 8,
+      "toc_title": "第八章 夜里悄悄话",
+      "file": "novel_1518708\\chapters\\0008_第八章 夜里悄悄话.txt",
+      "page_title": "同桌   第八章 夜里悄悄话"
+    },
+    {
+      "index": 9,
+      "sort_order": 9,
+      "toc_title": "第九章 身不由己",
+      "file": "novel_1518708\\chapters\\0009_第九章 身不由己.txt",
+      "page_title": "同桌   第九章 身不由己"
+    },
+    {
+      "index": 10,
+      "sort_order": 10,
+      "toc_title": "第十章 百花齐放",
+      "file": "novel_1518708\\chapters\\0010_第十章 百花齐放.txt",
+      "page_title": "同桌   第十章 百花齐放"
+    }
+  ],
+  "cover_file": "novel_1518708\\cover.jpg"
+}

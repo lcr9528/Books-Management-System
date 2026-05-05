@@ -1,0 +1,26 @@
+{
+  "novel_id": "1527657",
+  "title": "玄武逆天",
+  "author": "咬不动甘蔗",
+  "cover_url": "http://img.faloo.com/Novel/498x705/1/1635/001635106.jpg",
+  "toc_url": "https://b.faloo.com/html_1527_1527657/",
+  "category_main": "玄幻奇幻",
+  "category_sub": "东方玄幻",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_1527_1527657/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 1,
+  "intro_file": "novel_1527657\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第1章：虎城林家",
+      "file": "novel_1527657\\chapters\\0001_第1章：虎城林家.txt",
+      "page_title": "玄武逆天   第1章：虎城林家"
+    }
+  ],
+  "cover_file": "novel_1527657\\cover.jpg"
+}

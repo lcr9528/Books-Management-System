@@ -1,0 +1,33 @@
+{
+  "novel_id": "1527698",
+  "title": "一剑斩三界",
+  "author": "拿到密码",
+  "cover_url": "http://img.faloo.com/novel/images/cover/498x705.jpg",
+  "toc_url": "https://b.faloo.com/html_1527_1527698/",
+  "category_main": "玄幻奇幻",
+  "category_sub": "东方玄幻",
+  "chapter_count_requested": 30,
+  "toc_pages": [
+    "https://b.faloo.com/html_1527_1527698/"
+  ],
+  "toc_page_count": 1,
+  "total_chapters_on_book_page_hint": 2,
+  "intro_file": "novel_1527698\\简介.txt",
+  "chapters_fetched": [
+    {
+      "index": 1,
+      "sort_order": 1,
+      "toc_title": "第一章鹿血",
+      "file": "novel_1527698\\chapters\\0001_第一章鹿血.txt",
+      "page_title": "一剑斩三界   第一章鹿血"
+    },
+    {
+      "index": 2,
+      "sort_order": 2,
+      "toc_title": "第二章基础剑法大成",
+      "file": "novel_1527698\\chapters\\0002_第二章基础剑法大成.txt",
+      "page_title": "一剑斩三界   第二章基础剑法大成"
+    }
+  ],
+  "cover_file": "novel_1527698\\cover.jpg"
+}
