@@ -9,6 +9,7 @@ import ForgotPasswordView from '../views/ForgotPasswordView.vue'
 import MyBorrowsView from '../views/MyBorrowsView.vue'
 import LibrarianView from '../views/LibrarianView.vue'
 import ProfileView from '../views/ProfileView.vue'
+import NotificationsView from '../views/NotificationsView.vue'
 
 const routes = [
   { path: '/', name: 'home', component: HomeView },
@@ -24,6 +25,12 @@ const routes = [
   { path: '/register', name: 'register', component: AuthView },
   { path: '/forgot-password', name: 'forgot-password', component: ForgotPasswordView },
   { path: '/me/profile', name: 'profile', component: ProfileView, meta: { requiresAuth: true } },
+  {
+    path: '/me/notifications',
+    name: 'notifications',
+    component: NotificationsView,
+    meta: { requiresAuth: true },
+  },
   { path: '/me/borrows', name: 'my-borrows', component: MyBorrowsView, meta: { requiresAuth: true } },
   { path: '/librarian', name: 'librarian', component: LibrarianView, meta: { requiresAuth: true, librarian: true } },
 ]

@@ -47,3 +47,49 @@ export function returnBook(borrowId) {
 export function renewBorrow(borrowId, payload = {}) {
   return client.post(`/borrows/${borrowId}/renew/`, payload)
 }
+
+/** 书评：须曾借阅该书；每用户每书一条；发布后不可改，仅可删除后再发 */
+export function listBookReviews(bookId, params) {
+  return client.get(`/books/${bookId}/reviews/`, { params })
+}
+
+export function getMyBookReview(bookId) {
+  return client.get(`/books/${bookId}/reviews/mine/`)
+}
+
+export function createBookReview(bookId, data) {
+  return client.post(`/books/${bookId}/reviews/`, data)
+}
+
+export function deleteMyBookReview(bookId) {
+  return client.delete(`/books/${bookId}/reviews/mine/`)
+}
+
+/** 仅图书管理员 */
+export function deleteBookReviewAsLibrarian(bookId, reviewId) {
+  return client.delete(`/books/${bookId}/reviews/${reviewId}/`)
+}
+
+export function toggleBookReviewLike(bookId, reviewId) {
+  return client.post(`/books/${bookId}/reviews/${reviewId}/like/`)
+}
+
+export function listBookReviewComments(bookId, reviewId) {
+  return client.get(`/books/${bookId}/reviews/${reviewId}/comments/`)
+}
+
+export function createBookReviewComment(bookId, reviewId, data) {
+  return client.post(`/books/${bookId}/reviews/${reviewId}/comments/`, data)
+}
+
+export function toggleBookReviewCommentLike(bookId, reviewId, commentId) {
+  return client.post(
+    `/books/${bookId}/reviews/${reviewId}/comments/${commentId}/like/`
+  )
+}
+
+export function deleteBookReviewComment(bookId, reviewId, commentId) {
+  return client.delete(
+    `/books/${bookId}/reviews/${reviewId}/comments/${commentId}/`
+  )
+}

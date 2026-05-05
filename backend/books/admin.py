@@ -1,6 +1,15 @@
 from django.contrib import admin
 
-from .models import Book, BookChapter, BorrowRecord, Category
+from .models import (
+    Book,
+    BookChapter,
+    BookReview,
+    BookReviewComment,
+    BookReviewLike,
+    BorrowRecord,
+    Category,
+    Notification,
+)
 
 
 @admin.register(Category)
@@ -31,6 +40,33 @@ class BookAdmin(admin.ModelAdmin):
     list_filter = ("category",)
     search_fields = ("title", "isbn", "author", "publisher")
     raw_id_fields = ("category",)
+
+
+@admin.register(BookReviewLike)
+class BookReviewLikeAdmin(admin.ModelAdmin):
+    list_display = ("id", "review", "user", "created_at")
+    raw_id_fields = ("review", "user")
+
+
+@admin.register(BookReviewComment)
+class BookReviewCommentAdmin(admin.ModelAdmin):
+    list_display = ("id", "review", "user", "parent_id", "created_at")
+    raw_id_fields = ("review", "user", "parent")
+
+
+@admin.register(Notification)
+class NotificationAdmin(admin.ModelAdmin):
+    list_display = ("id", "recipient", "kind", "actor", "is_read", "created_at")
+    list_filter = ("kind", "is_read")
+    raw_id_fields = ("recipient", "actor", "book", "book_review", "comment")
+
+
+@admin.register(BookReview)
+class BookReviewAdmin(admin.ModelAdmin):
+    list_display = ("id", "book", "user", "rating", "created_at")
+    list_filter = ("rating",)
+    search_fields = ("content", "book__title", "user__username")
+    raw_id_fields = ("book", "user")
 
 
 @admin.register(BorrowRecord)

@@ -1,29 +1,49 @@
 import django_filters
 from django.conf import settings
 from django.db import transaction
+from django.db.models import BooleanField, Count, Exists, OuterRef, Value
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
-from rest_framework import generics, serializers, viewsets
+from rest_framework import generics, serializers, status, viewsets
+from rest_framework.views import APIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.decorators import action
-from rest_framework.exceptions import ValidationError
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.exceptions import NotFound, ValidationError
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
-from .models import Book, BookChapter, BorrowRecord, Category
+from .models import (
+    Book,
+    BookChapter,
+    BookReview,
+    BookReviewComment,
+    BookReviewCommentLike,
+    BookReviewLike,
+    BorrowRecord,
+    Category,
+    Notification,
+)
 from .permissions import (
     BorrowObjectPermission,
+    CommentOwnerOrLibrarian,
+    IsLibrarian,
     IsLibrarianOrReadOnly,
 )
 from .serializers import (
+    annotate_book_review_comment_queryset,
     BookChapterDetailSerializer,
     BookChapterListSerializer,
     BookDetailSerializer,
     BookListSerializer,
+    BookReviewCommentSerializer,
+    BookReviewCommentWriteSerializer,
+    BookReviewSerializer,
+    BookReviewWriteSerializer,
     BookWriteSerializer,
     BorrowCreateSerializer,
     BorrowRecordSerializer,
     CategorySerializer,
+    NotificationSerializer,
 )
 
 
@@ -84,6 +104,242 @@ class BookChapterDetailAPIView(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return BookChapter.objects.filter(book_id=self.kwargs["book_pk"])
+
+
+def _annotate_book_review_qs(qs, request):
+    qs = qs.annotate(
+        like_count=Count("likes", distinct=True),
+        comment_count=Count("review_comments", distinct=True),
+    )
+    user = request.user
+    if user.is_authenticated:
+        qs = qs.annotate(
+            liked_by_me=Exists(
+                BookReviewLike.objects.filter(
+                    review_id=OuterRef("pk"), user_id=user.id
+                )
+            )
+        )
+    else:
+        qs = qs.annotate(liked_by_me=Value(False, output_field=BooleanField()))
+    return qs
+
+
+class BookReviewListCreateAPIView(generics.ListCreateAPIView):
+    """GET/POST /api/v1/books/{book_pk}/reviews/ — 列表公开；发表需登录且曾借阅该书。"""
+
+    pagination_class = BookPagePagination
+
+    def get_permissions(self):
+        if self.request.method == "POST":
+            return [IsAuthenticated()]
+        return [AllowAny()]
+
+    def get_serializer_class(self):
+        if self.request.method == "POST":
+            return BookReviewWriteSerializer
+        return BookReviewSerializer
+
+    def get_serializer_context(self):
+        ctx = super().get_serializer_context()
+        if self.request.method == "POST":
+            ctx["book"] = get_object_or_404(Book.objects.all(), pk=self.kwargs["book_pk"])
+        return ctx
+
+    def get_queryset(self):
+        qs = BookReview.objects.select_related("user").filter(
+            book_id=self.kwargs["book_pk"]
+        )
+        qs = _annotate_book_review_qs(qs, self.request)
+        return qs.order_by("-created_at")
+
+    def perform_create(self, serializer):
+        book_pk = self.kwargs["book_pk"]
+        if BookReview.objects.filter(
+            book_id=book_pk, user_id=self.request.user.id
+        ).exists():
+            raise ValidationError(
+                {"detail": "您已对该书发表过书评；发布后不可修改，请先删除后再发表。"}
+            )
+        serializer.save()
+
+
+class BookReviewMineAPIView(generics.RetrieveDestroyAPIView):
+    """GET/DELETE /api/v1/books/{book_pk}/reviews/mine/ — 当前用户对该书的一条书评（发布后不可修改）。"""
+
+    permission_classes = (IsAuthenticated,)
+    serializer_class = BookReviewSerializer
+    http_method_names = ("get", "delete", "head", "options")
+
+    def get_queryset(self):
+        qs = BookReview.objects.select_related("user").filter(
+            book_id=self.kwargs["book_pk"],
+            user_id=self.request.user.id,
+        )
+        return _annotate_book_review_qs(qs, self.request)
+
+    def get_object(self):
+        obj = self.get_queryset().first()
+        if obj is None:
+            raise NotFound()
+        self.check_object_permissions(self.request, obj)
+        return obj
+
+
+class BookReviewAdminDestroyAPIView(generics.DestroyAPIView):
+    """DELETE /api/v1/books/{book_pk}/reviews/{pk}/ — 仅图书管理员可删任意书评。"""
+
+    permission_classes = (IsAuthenticated, IsLibrarian)
+
+    def get_queryset(self):
+        return BookReview.objects.filter(book_id=self.kwargs["book_pk"])
+
+
+class BookReviewLikeToggleAPIView(APIView):
+    """POST /api/v1/books/{book_pk}/reviews/{review_pk}/like/ — 切换点赞。"""
+
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, book_pk, review_pk):
+        review = get_object_or_404(BookReview, pk=review_pk, book_id=book_pk)
+        like = BookReviewLike.objects.filter(review=review, user=request.user).first()
+        if like:
+            like.delete()
+            liked = False
+        else:
+            BookReviewLike.objects.create(review=review, user=request.user)
+            liked = True
+            from .notify import notify_review_liked
+
+            notify_review_liked(review, request.user)
+        cnt = BookReviewLike.objects.filter(review=review).count()
+        return Response({"liked": liked, "like_count": cnt})
+
+
+class BookReviewCommentListCreateAPIView(generics.ListCreateAPIView):
+    """GET/POST /api/v1/books/{book_pk}/reviews/{review_pk}/comments/ — 一级评论列表与发表。"""
+
+    pagination_class = None
+
+    def get_permissions(self):
+        if self.request.method == "POST":
+            return [IsAuthenticated()]
+        return [AllowAny()]
+
+    def get_serializer_class(self):
+        if self.request.method == "POST":
+            return BookReviewCommentWriteSerializer
+        return BookReviewCommentSerializer
+
+    def get_serializer_context(self):
+        ctx = super().get_serializer_context()
+        ctx["review"] = get_object_or_404(
+            BookReview.objects.all(),
+            pk=self.kwargs["review_pk"],
+            book_id=self.kwargs["book_pk"],
+        )
+        return ctx
+
+    def get_queryset(self):
+        review = get_object_or_404(
+            BookReview.objects.all(),
+            pk=self.kwargs["review_pk"],
+            book_id=self.kwargs["book_pk"],
+        )
+        qs = BookReviewComment.objects.filter(
+            review=review, parent__isnull=True
+        ).select_related("user", "review", "review__user")
+        qs = annotate_book_review_comment_queryset(qs, self.request)
+        return qs.order_by("created_at", "id")
+
+    def perform_create(self, serializer):
+        comment = serializer.save()
+        from .notify import notify_comment_replied, notify_review_commented
+
+        if comment.parent_id:
+            notify_comment_replied(comment.parent, comment)
+        else:
+            notify_review_commented(comment.review, self.request.user, comment)
+
+
+class BookReviewCommentLikeToggleAPIView(APIView):
+    """POST .../comments/{comment_pk}/like/ — 切换评论点赞。"""
+
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request, book_pk, review_pk, comment_pk):
+        review = get_object_or_404(BookReview, pk=review_pk, book_id=book_pk)
+        comment = get_object_or_404(
+            BookReviewComment.objects.all(), pk=comment_pk, review=review
+        )
+        like = BookReviewCommentLike.objects.filter(
+            comment=comment, user=request.user
+        ).first()
+        if like:
+            like.delete()
+            liked = False
+        else:
+            BookReviewCommentLike.objects.create(comment=comment, user=request.user)
+            liked = True
+        cnt = BookReviewCommentLike.objects.filter(comment=comment).count()
+        return Response({"liked": liked, "like_count": cnt})
+
+
+class BookReviewCommentDestroyAPIView(generics.DestroyAPIView):
+    """DELETE .../comments/{comment_pk}/ — 删除评论（本人或馆员）。"""
+
+    permission_classes = (IsAuthenticated, CommentOwnerOrLibrarian)
+    lookup_url_kwarg = "comment_pk"
+
+    def get_queryset(self):
+        return BookReviewComment.objects.filter(
+            review_id=self.kwargs["review_pk"],
+            review__book_id=self.kwargs["book_pk"],
+        )
+
+
+class NotificationViewSet(viewsets.ReadOnlyModelViewSet):
+    """GET /api/v1/notifications/ — 当前用户通知列表；标记已读。"""
+
+    permission_classes = (IsAuthenticated,)
+    serializer_class = NotificationSerializer
+    pagination_class = BookPagePagination
+    # 需允许 post：read、mark-all-read 等 @action
+    http_method_names = ("get", "head", "options", "post")
+
+    def get_queryset(self):
+        return (
+            Notification.objects.select_related(
+                "actor", "book", "book_review", "comment"
+            )
+            .filter(recipient=self.request.user)
+            .order_by("-created_at")
+        )
+
+    @action(detail=True, methods=("post",), url_path="read")
+    def mark_read(self, request, pk=None):
+        updated = Notification.objects.filter(
+            pk=pk, recipient=request.user, is_read=False
+        ).update(is_read=True)
+        if not updated and not Notification.objects.filter(
+            pk=pk, recipient=request.user
+        ).exists():
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        return Response({"ok": True})
+
+    @action(detail=False, methods=("post",), url_path="mark-all-read")
+    def mark_all_read(self, request):
+        Notification.objects.filter(recipient=request.user, is_read=False).update(
+            is_read=True
+        )
+        return Response({"ok": True})
+
+    @action(detail=False, methods=("get",), url_path="unread-count")
+    def unread_count(self, request):
+        n = Notification.objects.filter(
+            recipient=request.user, is_read=False
+        ).count()
+        return Response({"count": n})
 
 
 class BorrowViewSet(viewsets.ModelViewSet):

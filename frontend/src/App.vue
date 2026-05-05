@@ -1,11 +1,14 @@
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useUser, clearSession, refreshUser } from './auth'
+import { getUnreadNotificationCount } from './api/notifications'
 
 const navRouter = useRouter()
 const route = useRoute()
 const { user, isLoggedIn, loading } = useUser()
+const unreadCount = ref(0)
+let unreadPollTimer = null
 
 const isAuthPage = computed(() => ['login', 'register', 'forgot-password'].includes(route.name))
 /** 仅首页套图书馆背景图（顶栏+主体）；登录类页面由各自 .auth-page 铺图 */
@@ -14,9 +17,44 @@ const isHomePage = computed(() => route.name === 'home')
 const DEFAULT_AVATAR = '/toux.png'
 const avatarSrc = computed(() => user.value?.avatar || DEFAULT_AVATAR)
 
+async function pollUnread() {
+  if (!localStorage.getItem('access')) {
+    unreadCount.value = 0
+    return
+  }
+  try {
+    const { data } = await getUnreadNotificationCount()
+    unreadCount.value = data?.count ?? 0
+  } catch {
+    unreadCount.value = 0
+  }
+}
+
+function onUnreadRefreshEvent() {
+  pollUnread()
+}
+
 onMounted(() => {
   refreshUser()
+  pollUnread()
+  unreadPollTimer = setInterval(pollUnread, 45000)
+  window.addEventListener('app:poll-unread', onUnreadRefreshEvent)
 })
+
+onUnmounted(() => {
+  window.removeEventListener('app:poll-unread', onUnreadRefreshEvent)
+  if (unreadPollTimer) {
+    clearInterval(unreadPollTimer)
+    unreadPollTimer = null
+  }
+})
+
+watch(
+  () => [route.path, isLoggedIn.value],
+  () => {
+    pollUnread()
+  }
+)
 
 function logout() {
   clearSession()
@@ -40,6 +78,27 @@ function logout() {
       </nav>
       <nav v-if="!loading" class="header__right">
         <template v-if="isLoggedIn">
+          <router-link
+            :to="{ name: 'notifications' }"
+            class="nav-msg"
+            aria-label="消息通知"
+          >
+            <span class="nav-msg__wrap">
+              <img
+                class="nav-msg__icon"
+                src="/xiaoxi.svg"
+                alt=""
+                width="22"
+                height="22"
+              />
+              <span
+                v-if="unreadCount > 0"
+                class="nav-msg__badge"
+                aria-hidden="true"
+                >{{ unreadCount > 99 ? '99+' : unreadCount }}</span
+              >
+            </span>
+          </router-link>
           <router-link :to="{ name: 'profile' }" class="nav-user">
             <img class="nav-avatar" :src="avatarSrc" alt="" width="32" height="32" />
             <span class="u nav-user__name">{{ user?.username }}</span>
@@ -235,6 +294,49 @@ function logout() {
     0 0 12px rgba(255, 255, 255, 0.22);
 }
 
+.nav-msg {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 2px;
+}
+.nav-msg__wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-msg__icon {
+  display: block;
+  opacity: 0.92;
+}
+.nav-msg__badge {
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  min-width: 1rem;
+  padding: 0 4px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-align: center;
+  border-radius: 999px;
+  background: #dc2626;
+  color: #fff;
+  box-shadow: 0 0 0 2px #fffaf2;
+}
+.header--on-photo .nav-msg__badge {
+  box-shadow:
+    0 0 0 2px rgba(15, 23, 42, 0.35),
+    0 1px 4px rgba(0, 0, 0, 0.45);
+}
+.header--on-photo .nav-msg__icon {
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+}
 .nav-user {
   display: inline-flex;
   align-items: center;

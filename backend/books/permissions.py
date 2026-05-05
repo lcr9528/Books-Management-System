@@ -15,6 +15,17 @@ class IsLibrarianOrReadOnly(permissions.BasePermission):
         return bool(u and u.is_authenticated and u.is_librarian)
 
 
+class CommentOwnerOrLibrarian(permissions.BasePermission):
+    """删除评论：本人或图书管理员。"""
+
+    def has_object_permission(self, request, view, obj) -> bool:
+        if not request.user.is_authenticated:
+            return False
+        if request.user.is_librarian:
+            return True
+        return getattr(obj, "user_id", None) == request.user.id
+
+
 class BorrowObjectPermission(permissions.BasePermission):
     """借阅记录仅本人可操作；不因图书管理员身份放行（与 BorrowViewSet 列表范围一致）。"""
 
