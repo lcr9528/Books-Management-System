@@ -1,14 +1,15 @@
 import django_filters
 from django.conf import settings
 from django.db import transaction
-from django.db.models import BooleanField, Count, Exists, OuterRef, Value
+from django.db.models import BooleanField, Count, Exists, F, OuterRef, Value
+from django.db.models.functions import Least
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import generics, serializers, status, viewsets
 from rest_framework.views import APIView
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.decorators import action
-from rest_framework.exceptions import NotFound, ValidationError
+from rest_framework.exceptions import NotAuthenticated, NotFound, PermissionDenied, ValidationError
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 
@@ -22,6 +23,7 @@ from .models import (
     BorrowRecord,
     Category,
     Notification,
+    SiteSettings,
 )
 from .permissions import (
     BorrowObjectPermission,
@@ -44,7 +46,28 @@ from .serializers import (
     BorrowRecordSerializer,
     CategorySerializer,
     NotificationSerializer,
+    SiteSettingsSerializer,
 )
+
+
+class SiteSettingsAPIView(APIView):
+    """GET/PATCH /api/v1/site-settings/ — 全局站点开关（PATCH 仅图书管理员）。"""
+
+    def get_permissions(self):
+        if self.request.method == "PATCH":
+            return [IsAuthenticated(), IsLibrarian()]
+        return [AllowAny()]
+
+    def get(self, request):
+        s = SiteSettings.get_solo()
+        return Response(SiteSettingsSerializer(s).data)
+
+    def patch(self, request):
+        s = SiteSettings.get_solo()
+        ser = SiteSettingsSerializer(s, data=request.data, partial=True)
+        ser.is_valid(raise_exception=True)
+        ser.save()
+        return Response(ser.data)
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -104,6 +127,22 @@ class BookChapterDetailAPIView(generics.RetrieveAPIView):
 
     def get_queryset(self):
         return BookChapter.objects.filter(book_id=self.kwargs["book_pk"])
+
+    def retrieve(self, request, *args, **kwargs):
+        if SiteSettings.get_solo().require_borrow_to_read_chapters:
+            user = request.user
+            book_pk = self.kwargs["book_pk"]
+            if not user.is_authenticated:
+                raise NotAuthenticated(detail="请先登录后再阅读章节正文。")
+            if not BorrowRecord.objects.filter(
+                user_id=user.id,
+                book_id=book_pk,
+                status=BorrowRecord.Status.BORROWED,
+            ).exists():
+                raise PermissionDenied(
+                    detail="请先借阅本书，并在「在借」期间阅读章节正文。"
+                )
+        return super().retrieve(request, *args, **kwargs)
 
 
 def _annotate_book_review_qs(qs, request):
@@ -382,9 +421,11 @@ class BorrowViewSet(viewsets.ModelViewSet):
             rec = get_object_or_404(qs, pk=pk)
             if rec.status != BorrowRecord.Status.BORROWED:
                 raise ValidationError({"detail": "该记录已归还，无需再次归还。"})
-            b = rec.book
-            b.available_copies = min(b.available_copies + 1, b.total_copies)
-            b.save(update_fields=["available_copies", "updated_at"])
+            # 单行原子加回在架册数，避免多副本同时归还时的丢失更新；上限钳制 total_copies
+            Book.objects.filter(pk=rec.book_id).update(
+                available_copies=Least(F("available_copies") + 1, F("total_copies")),
+                updated_at=timezone.now(),
+            )
             rec.returned_at = timezone.now()
             rec.status = BorrowRecord.Status.RETURNED
             rec.save(update_fields=["returned_at", "status"])

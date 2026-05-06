@@ -15,6 +15,7 @@ from .views import (
     BorrowViewSet,
     CategoryViewSet,
     NotificationViewSet,
+    SiteSettingsAPIView,
 )
 
 router = DefaultRouter()
@@ -24,6 +25,7 @@ router.register("borrows", BorrowViewSet, basename="borrow")
 router.register("notifications", NotificationViewSet, basename="notification")
 
 urlpatterns = [
+    path("site-settings/", SiteSettingsAPIView.as_view(), name="site-settings"),
     path(
         "books/<int:book_pk>/chapters/<int:pk>/",
         BookChapterDetailAPIView.as_view(),

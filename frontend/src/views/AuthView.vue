@@ -142,7 +142,7 @@ async function onLogin(e) {
     const { data } = await obtainToken(loginUsername.value, loginPassword.value)
     localStorage.setItem('access', data.access)
     localStorage.setItem('refresh', data.refresh)
-    await refreshUser()
+    await refreshUser({ force: true })
     const next = route.query.next
     router.push(typeof next === 'string' && next ? next : '/')
   } catch (err) {

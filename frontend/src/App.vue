@@ -3,6 +3,7 @@ import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useUser, clearSession, refreshUser } from './auth'
 import { getUnreadNotificationCount } from './api/notifications'
+import AppToast from './components/AppToast.vue'
 
 const navRouter = useRouter()
 const route = useRoute()
@@ -35,7 +36,7 @@ function onUnreadRefreshEvent() {
 }
 
 onMounted(() => {
-  refreshUser()
+  refreshUser({ force: true })
   pollUnread()
   unreadPollTimer = setInterval(pollUnread, 45000)
   window.addEventListener('app:poll-unread', onUnreadRefreshEvent)
@@ -99,14 +100,14 @@ function logout() {
               >
             </span>
           </router-link>
-          <router-link :to="{ name: 'profile' }" class="nav-user">
-            <img class="nav-avatar" :src="avatarSrc" alt="" width="32" height="32" />
-            <span class="u nav-user__name">{{ user?.username }}</span>
-          </router-link>
           <a href="#" @click.prevent="navRouter.push({ name: 'my-borrows' })">我的借阅</a>
           <a v-if="user?.is_librarian" href="#" @click.prevent="navRouter.push({ name: 'librarian' })"
             >管理</a
           >
+          <router-link :to="{ name: 'profile' }" class="nav-user">
+            <img class="nav-avatar" :src="avatarSrc" alt="" width="32" height="32" />
+            <span class="u nav-user__name">{{ user?.username }}</span>
+          </router-link>
           <a href="#" @click.prevent="logout">退出</a>
         </template>
         <template v-else>
@@ -124,6 +125,7 @@ function logout() {
     <main class="app-main" :class="{ 'app-main--auth': isAuthPage }">
       <router-view />
     </main>
+    <AppToast />
   </div>
 </template>
 
@@ -137,7 +139,8 @@ function logout() {
 /* 仅首页：public/1.png 铺满顶栏与下方内容区 */
 .layout--home-bg {
   background: #e2e8f0 url('/1.png') center / cover no-repeat;
-  background-attachment: fixed;
+  /* fixed 易在路由切换/重绘时触发整页合成层开销；scroll 可减轻「从详情回首页」卡顿 */
+  background-attachment: scroll;
 }
 .layout--auth {
   min-height: 100vh;

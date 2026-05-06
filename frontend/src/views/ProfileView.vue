@@ -3,6 +3,7 @@ import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { updateMe } from '../api/auth'
 import { refreshUser, user } from '../auth'
+import { showToast } from '../composables/useToast'
 
 const DEFAULT_AVATAR = '/toux.png'
 const router = useRouter()
@@ -19,20 +20,8 @@ const pendingFile = ref(null)
 const previewUrl = ref(null)
 const err = ref('')
 const loading = ref(false)
-const toastVisible = ref(false)
-let toastTimer = null
-
-function showSuccessToast() {
-  toastVisible.value = true
-  if (toastTimer != null) {
-    window.clearTimeout(toastTimer)
-    toastTimer = null
-  }
-  toastTimer = window.setTimeout(() => {
-    toastVisible.value = false
-    toastTimer = null
-  }, 3000)
-}
+/** 点击头像：大图预览 */
+const avatarPreviewOpen = ref(false)
 
 const avatarPreview = computed(() => {
   if (previewUrl.value) return previewUrl.value
@@ -52,7 +41,7 @@ function fillFromUser(u) {
 
 onMounted(async () => {
   try {
-    await refreshUser()
+    await refreshUser({ force: true })
     fillFromUser(user.value)
   } catch {
     err.value = '加载失败'
@@ -61,8 +50,28 @@ onMounted(async () => {
 
 watch(user, (u) => fillFromUser(u), { immediate: true })
 
+watch(avatarPreviewOpen, (open) => {
+  if (open) {
+    window.addEventListener('keydown', onPreviewKeydown)
+  } else {
+    window.removeEventListener('keydown', onPreviewKeydown)
+  }
+})
+
 function onPickAvatar() {
   fileInput.value?.click()
+}
+
+function openAvatarPreview() {
+  avatarPreviewOpen.value = true
+}
+
+function closeAvatarPreview() {
+  avatarPreviewOpen.value = false
+}
+
+function onPreviewKeydown(ev) {
+  if (ev.key === 'Escape') closeAvatarPreview()
 }
 
 function onFileChange(e) {
@@ -102,7 +111,7 @@ async function onSubmit(e) {
       previewUrl.value = null
     }
     if (fileInput.value) fileInput.value.value = ''
-    await refreshUser()
+    await refreshUser({ force: true })
     fillFromUser(data)
     showSuccessToast()
   } catch (e2) {
@@ -123,32 +132,38 @@ async function onSubmit(e) {
 }
 
 onBeforeUnmount(() => {
-  if (toastTimer != null) {
-    window.clearTimeout(toastTimer)
-    toastTimer = null
-  }
+  window.removeEventListener('keydown', onPreviewKeydown)
 })
 </script>
 
 <template>
-  <div class="container profile-wrap">
-    <h1>个人资料</h1>
-    <!-- <p class="profile-lead">修改头像与基本信息。未上传头像时使用默认图。</p> -->
+  <div class="container profile-page">
+    <h1 class="profile-page-title">个人资料</h1>
     <p v-if="err" class="profile-err">{{ err }}</p>
 
+    <div class="profile-body">
     <form class="profile-form" @submit="onSubmit">
       <div class="profile-avatar-row">
-        <button type="button" class="profile-avatar-wrap" @click="onPickAvatar">
-          <img class="profile-avatar-img" :src="avatarPreview" alt="头像" />
-          <span class="profile-avatar-hint">点击更换</span>
-        </button>
-        <input
-          ref="fileInput"
-          type="file"
-          class="profile-file"
-          accept="image/jpeg,image/png,image/webp,image/gif"
-          @change="onFileChange"
-        />
+        <div class="profile-avatar-stack">
+          <button
+            type="button"
+            class="profile-avatar-wrap"
+            title="点击预览大图"
+            @click="openAvatarPreview"
+          >
+            <img class="profile-avatar-img" :src="avatarPreview" alt="头像" />
+          </button>
+          <button type="button" class="profile-change-btn" @click="onPickAvatar">
+            更换
+          </button>
+          <input
+            ref="fileInput"
+            type="file"
+            class="profile-file"
+            accept="image/jpeg,image/png,image/webp,image/gif"
+            @change="onFileChange"
+          />
+        </div>
       </div>
 
       <label class="profile-field">
@@ -179,11 +194,25 @@ onBeforeUnmount(() => {
         <button type="button" class="profile-back" @click="router.push('/')">返回首页</button>
       </div>
     </form>
+    </div>
 
     <Teleport to="body">
-      <Transition name="toast">
-        <div v-if="toastVisible" class="profile-toast" role="status" aria-live="polite">
-          保存成功
+      <Transition name="profile-preview">
+        <div
+          v-if="avatarPreviewOpen"
+          class="profile-preview-mask"
+          role="presentation"
+          @click.self="closeAvatarPreview"
+        >
+          <div
+            class="profile-preview-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-label="头像预览，点击空白处关闭"
+            @click.stop
+          >
+            <img class="profile-preview-img" :src="avatarPreview" alt="头像预览" />
+          </div>
         </div>
       </Transition>
     </Teleport>
@@ -191,17 +220,28 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-.profile-wrap {
+.profile-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 520px;
-  margin: 0 auto;
-  text-align: center;
   width: 100%;
 }
-.profile-wrap > h1 {
+.profile-page-title {
   width: 100%;
+  text-align: center;
+  margin: 0 0 1rem;
+  font-size: clamp(1.35rem, 3vw, 1.55rem);
+  font-weight: 800;
+  color: #1a1a2e;
+  letter-spacing: -0.02em;
+}
+.profile-body {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .profile-lead {
   color: #64748b;
@@ -213,17 +253,27 @@ onBeforeUnmount(() => {
   color: #b91c1c;
   margin: 0 0 0.75rem;
   width: 100%;
+  max-width: 520px;
+  text-align: center;
 }
 .profile-form {
   margin-top: 0.5rem;
   width: 100%;
   max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: left;
 }
 .profile-avatar-row {
   margin-bottom: 1.25rem;
   display: flex;
   justify-content: center;
+}
+.profile-avatar-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
 }
 .profile-file {
   position: absolute;
@@ -233,15 +283,30 @@ onBeforeUnmount(() => {
   pointer-events: none;
 }
 .profile-avatar-wrap {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
+  display: block;
   padding: 0;
   border: none;
-  background: none;
-  cursor: pointer;
+  border-radius: 50%;
+  background: transparent !important;
+  cursor: zoom-in;
   font: inherit;
+  line-height: 0;
+  box-shadow: 0 0 0 2px transparent;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.profile-avatar-wrap:hover {
+  background: transparent !important;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.45);
+  transform: scale(1.03);
+}
+.profile-avatar-wrap:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.55), 0 0 0 6px rgba(13, 148, 136, 0.2);
+}
+.profile-avatar-wrap:active {
+  transform: scale(1.01);
 }
 .profile-avatar-img {
   width: 96px;
@@ -251,11 +316,74 @@ onBeforeUnmount(() => {
   border: none;
   display: block;
 }
-.profile-avatar-hint {
-  font-size: 0.82rem;
-  color: #0d9488;
-  font-weight: 600;
+.profile-change-btn {
+  padding: 0.42rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(13, 148, 136, 0.45) !important;
+  background: rgba(13, 148, 136, 0.08) !important;
+  color: #0f766e !important;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
 }
+.profile-change-btn:hover {
+  background: rgba(13, 148, 136, 0.14) !important;
+  border-color: rgba(13, 148, 136, 0.65) !important;
+  color: #0d9488 !important;
+}
+.profile-change-btn:active {
+  background: rgba(13, 148, 136, 0.2) !important;
+}
+
+/* 头像大图预览 */
+.profile-preview-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(4px);
+}
+.profile-preview-dialog {
+  position: relative;
+  max-width: min(92vw, 520px);
+  max-height: min(88vh, 720px);
+  margin: auto;
+}
+.profile-preview-img {
+  display: block;
+  max-width: min(92vw, 520px);
+  max-height: min(88vh, 720px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.45);
+}
+.profile-preview-enter-active,
+.profile-preview-leave-active {
+  transition: opacity 0.22s ease;
+}
+.profile-preview-enter-active .profile-preview-dialog,
+.profile-preview-leave-active .profile-preview-dialog {
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+.profile-preview-enter-from,
+.profile-preview-leave-to {
+  opacity: 0;
+}
+.profile-preview-enter-from .profile-preview-dialog,
+.profile-preview-leave-to .profile-preview-dialog {
+  opacity: 0;
+  transform: scale(0.94);
+}
+
 .profile-field {
   display: flex;
   flex-direction: column;
@@ -316,31 +444,5 @@ onBeforeUnmount(() => {
 .profile-back:hover:not(:disabled) {
   background: #f1f5f9 !important;
   color: #0f172a !important;
-}
-
-/* 保存成功：视口居中浮层，3 秒后关闭 */
-.profile-toast {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  padding: 0.85rem 1.75rem;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #0d9488, #0f766e);
-  color: #fff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  box-shadow: 0 12px 32px -10px rgba(15, 23, 42, 0.4);
-  pointer-events: none;
-}
-.toast-enter-active,
-.toast-leave-active {
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-.toast-enter-from,
-.toast-leave-to {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.94);
 }
 </style>

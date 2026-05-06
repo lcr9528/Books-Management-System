@@ -9,7 +9,21 @@ from .models import (
     BorrowRecord,
     Category,
     Notification,
+    SiteSettings,
 )
+
+
+@admin.register(SiteSettings)
+class SiteSettingsAdmin(admin.ModelAdmin):
+    list_display = ("id", "require_borrow_to_read_chapters", "updated_at")
+    fields = ("require_borrow_to_read_chapters", "updated_at")
+    readonly_fields = ("updated_at",)
+
+    def has_add_permission(self, request):
+        return not SiteSettings.objects.exists()
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 @admin.register(Category)

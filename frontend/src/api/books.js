@@ -93,3 +93,12 @@ export function deleteBookReviewComment(bookId, reviewId, commentId) {
     `/books/${bookId}/reviews/${reviewId}/comments/${commentId}/`
   )
 }
+
+/** GET 公开；PATCH 仅图书管理员 */
+export function getSiteSettings() {
+  return client.get('/site-settings/')
+}
+
+export function patchSiteSettings(data) {
+  return client.patch('/site-settings/', data)
+}

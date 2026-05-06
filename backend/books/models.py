@@ -106,7 +106,13 @@ class BorrowRecord(models.Model):
         verbose_name = "借阅记录"
         verbose_name_plural = "借阅记录"
         ordering = ("-borrowed_at",)
-        # 同一用户同一本「在借」不重复在 API 中校验，避免不同数据库对条件唯一约束支持差异
+        constraints = [
+            models.UniqueConstraint(
+                fields=("user", "book"),
+                condition=models.Q(status="borrowed"),
+                name="books_borrowrecord_active_user_book_uniq",
+            ),
+        ]
 
     def __str__(self) -> str:
         return f"{self.user_id} {self.book_id} {self.status}"
@@ -253,6 +259,34 @@ class BookReviewCommentLike(models.Model):
                 name="uniq_bookreviewcommentlike_comment_user",
             ),
         ]
+
+
+class SiteSettings(models.Model):
+    """全局站点开关（单例，固定 pk=1）。"""
+
+    id = models.IntegerField(primary_key=True, default=1, editable=False)
+    require_borrow_to_read_chapters = models.BooleanField(
+        "阅读章节需先借阅（在借中）",
+        default=False,
+        help_text="开启后，未登录或未有本书在借记录的用户无法通过 API 获取章节正文。",
+    )
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "站点设置"
+        verbose_name_plural = "站点设置"
+
+    def __str__(self) -> str:
+        return "站点设置"
+
+    def save(self, *args, **kwargs) -> None:
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def get_solo(cls) -> "SiteSettings":
+        obj, _ = cls.objects.get_or_create(pk=1)
+        return obj
 
 
 class Notification(models.Model):

@@ -1,6 +1,25 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import { listCategories, createCategory, createBook } from '../api/books'
+import { computed, onMounted, ref } from 'vue'
+import {
+  listCategories,
+  createCategory,
+  createBook,
+  getSiteSettings,
+  patchSiteSettings,
+} from '../api/books'
+import { showToast } from '../composables/useToast'
+
+/** 左侧菜单：book 默认首屏 */
+const activePanel = ref('book')
+
+const panelTitle = computed(() => {
+  if (activePanel.value === 'book') return '新增图书'
+  if (activePanel.value === 'category') return '新增图书分类'
+  return '阅读正文开关'
+})
+
+const requireBorrowToReadChapters = ref(false)
+const settingsLoading = ref(false)
 
 const catName = ref('')
 const book = ref({
@@ -13,40 +32,69 @@ const book = ref({
   total_copies: 1,
 })
 const categories = ref([])
-const msg = ref('')
-const err = ref('')
 
 onMounted(async () => {
   try {
-    const { data } = await listCategories()
-    const rows = data.results || data
+    const [{ data: cats }, { data: site }] = await Promise.all([
+      listCategories(),
+      getSiteSettings(),
+    ])
+    const rows = cats.results || cats
     categories.value = rows
     if (rows.length) book.value.category = rows[0].id
+    requireBorrowToReadChapters.value = !!site.require_borrow_to_read_chapters
   } catch (e) {
-    err.value = e?.message || '加载分类失败'
+    showToast(e?.message || '加载失败', { variant: 'error' })
   }
 })
 
+async function toggleRequireBorrowToRead(ev) {
+  ev.preventDefault()
+  settingsLoading.value = true
+  const next = !requireBorrowToReadChapters.value
+  try {
+    const { data } = await patchSiteSettings({
+      require_borrow_to_read_chapters: next,
+    })
+    requireBorrowToReadChapters.value = !!data.require_borrow_to_read_chapters
+    showToast(
+      next
+        ? '已开启：阅读章节正文须先借阅本书（在借中）。'
+        : '已关闭：访客与未在借用户可依权限阅读章节正文。'
+    )
+  } catch (e) {
+    const d = e?.response?.data
+    let errText = e?.message || '保存失败'
+    if (d?.detail) errText = String(d.detail)
+    else if (d && typeof d === 'object') {
+      const k = Object.keys(d)[0]
+      const v = d[k]
+      errText = Array.isArray(v) ? v[0] : String(v)
+    }
+    showToast(errText, { variant: 'error' })
+  } finally {
+    settingsLoading.value = false
+  }
+}
+
 async function addCategory() {
-  err.value = ''
-  msg.value = ''
   if (!catName.value.trim()) return
   try {
     const { data } = await createCategory(catName.value.trim())
     categories.value.push(data)
     book.value.category = data.id
-    msg.value = `已创建分类：${data.name}`
+    showToast(`已创建分类：${data.name}`)
     catName.value = ''
   } catch (e) {
-    err.value = e?.response?.data?.name?.[0] || e?.message || '创建失败'
+    showToast(e?.response?.data?.name?.[0] || e?.message || '创建失败', {
+      variant: 'error',
+    })
   }
 }
 
 async function addBook() {
-  err.value = ''
-  msg.value = ''
   if (!book.value.category) {
-    err.value = '请选择或先新增分类。'
+    showToast('请选择或先新增分类。', { variant: 'error' })
     return
   }
   try {
@@ -59,16 +107,16 @@ async function addBook() {
       description: book.value.description,
       total_copies: Number(book.value.total_copies) || 1,
     })
-    msg.value = `已添加图书《${data.title}》，ID ${data.id}`
+    showToast(`已添加图书《${data.title}》，ID ${data.id}`)
   } catch (e) {
     const d = e?.response?.data
+    let errText = e?.message || '失败'
     if (d && typeof d === 'object') {
       const k = Object.keys(d)[0]
       const v = d[k]
-      err.value = Array.isArray(v) ? v[0] : String(v)
-    } else {
-      err.value = e?.message || '失败'
+      errText = Array.isArray(v) ? v[0] : String(v)
     }
+    showToast(errText, { variant: 'error' })
   }
 }
 </script>
@@ -76,82 +124,144 @@ async function addBook() {
 <template>
   <div class="lib">
     <header class="lib__head">
-      <h1 class="lib__title">管理（图书 / 分类）</h1>
-      <p class="lib__lead">新增分类后，即可在下方录入图书信息。</p>
+      <h1 class="lib__title">管理后台</h1>
     </header>
 
-    <div class="lib__stack">
-      <section class="lib__card" aria-labelledby="lib-cat-heading">
-        <h2 id="lib-cat-heading" class="lib__card-title">新增分类</h2>
-        <div class="lib__cat-row">
-          <input
-            v-model="catName"
-            type="text"
-            class="lib__input lib__input--grow"
-            placeholder="输入分类名称，如：军事历史"
-            maxlength="100"
-            @keydown.enter.prevent="addCategory"
-          />
-          <button type="button" class="lib__btn lib__btn--primary" @click="addCategory">
-            添加分类
-          </button>
-        </div>
-      </section>
+    <div class="lib__layout">
+      <nav class="lib__sidebar" aria-label="管理功能导航">
+        <p class="lib__sidebar-label">目录</p>
+        <button
+          type="button"
+          class="lib__nav-item"
+          :class="{ 'lib__nav-item--active': activePanel === 'book' }"
+          :aria-current="activePanel === 'book' ? 'page' : undefined"
+          @click="activePanel = 'book'"
+        >
+          新增图书
+        </button>
+        <button
+          type="button"
+          class="lib__nav-item"
+          :class="{ 'lib__nav-item--active': activePanel === 'category' }"
+          :aria-current="activePanel === 'category' ? 'page' : undefined"
+          @click="activePanel = 'category'"
+        >
+          新增图书分类
+        </button>
+        <button
+          type="button"
+          class="lib__nav-item"
+          :class="{ 'lib__nav-item--active': activePanel === 'settings' }"
+          :aria-current="activePanel === 'settings' ? 'page' : undefined"
+          @click="activePanel = 'settings'"
+        >
+          阅读正文开关
+        </button>
+      </nav>
 
-      <section class="lib__card" aria-labelledby="lib-book-heading">
-        <h2 id="lib-book-heading" class="lib__card-title">新增图书</h2>
-        <div class="lib__form">
-          <label class="lib__field">
-            <span class="lib__label">书名</span>
-            <input v-model="book.title" type="text" class="lib__input" required placeholder="必填" />
-          </label>
-          <label class="lib__field">
-            <span class="lib__label">ISBN</span>
-            <input v-model="book.isbn" type="text" class="lib__input" required placeholder="必填" />
-          </label>
-          <label class="lib__field">
-            <span class="lib__label">作者</span>
-            <input v-model="book.author" type="text" class="lib__input" required placeholder="必填" />
-          </label>
-          <label class="lib__field">
-            <span class="lib__label">分类</span>
-            <select v-model="book.category" class="lib__input lib__select">
-              <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.name }}</option>
-            </select>
-          </label>
-          <label class="lib__field lib__field--full">
-            <span class="lib__label">出版社</span>
-            <input v-model="book.publisher" type="text" class="lib__input" placeholder="选填" />
-          </label>
-          <label class="lib__field">
-            <span class="lib__label">总册数</span>
+      <div class="lib__main">
+        <section
+          v-show="activePanel === 'book'"
+          class="lib__card lib__card--panel"
+          :aria-hidden="activePanel !== 'book'"
+          aria-labelledby="lib-book-heading"
+        >
+          <h2 id="lib-book-heading" class="lib__card-title">{{ panelTitle }}</h2>
+          <div class="lib__form">
+            <label class="lib__field">
+              <span class="lib__label">书名</span>
+              <input v-model="book.title" type="text" class="lib__input" required placeholder="必填" />
+            </label>
+            <label class="lib__field">
+              <span class="lib__label">ISBN</span>
+              <input v-model="book.isbn" type="text" class="lib__input" required placeholder="必填" />
+            </label>
+            <label class="lib__field">
+              <span class="lib__label">作者</span>
+              <input v-model="book.author" type="text" class="lib__input" required placeholder="必填" />
+            </label>
+            <label class="lib__field">
+              <span class="lib__label">分类</span>
+              <select v-model="book.category" class="lib__input lib__select">
+                <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.name }}</option>
+              </select>
+            </label>
+            <label class="lib__field">
+              <span class="lib__label">出版社</span>
+              <input v-model="book.publisher" type="text" class="lib__input" placeholder="选填" />
+            </label>
+            <label class="lib__field">
+              <span class="lib__label">总册数</span>
+              <input
+                v-model.number="book.total_copies"
+                type="number"
+                min="1"
+                class="lib__input"
+              />
+            </label>
+            <label class="lib__field lib__field--full">
+              <span class="lib__label">简介</span>
+              <textarea
+                v-model="book.description"
+                class="lib__textarea"
+                rows="4"
+                placeholder="图书内容简介（选填）"
+              />
+            </label>
+          </div>
+          <div class="lib__actions">
+            <button type="button" class="lib__btn lib__btn--primary lib__btn--lg" @click="addBook">
+              创建图书
+            </button>
+          </div>
+        </section>
+
+        <section
+          v-show="activePanel === 'category'"
+          class="lib__card lib__card--panel"
+          :aria-hidden="activePanel !== 'category'"
+          aria-labelledby="lib-cat-heading"
+        >
+          <h2 id="lib-cat-heading" class="lib__card-title">{{ panelTitle }}</h2>
+          <div class="lib__cat-row">
             <input
-              v-model.number="book.total_copies"
-              type="number"
-              min="1"
-              class="lib__input"
+              v-model="catName"
+              type="text"
+              class="lib__input lib__input--grow"
+              placeholder="输入分类名称，如：军事历史"
+              maxlength="100"
+              @keydown.enter.prevent="addCategory"
             />
-          </label>
-          <label class="lib__field lib__field--full">
-            <span class="lib__label">简介</span>
-            <textarea
-              v-model="book.description"
-              class="lib__textarea"
-              rows="4"
-              placeholder="图书内容简介（选填）"
-            />
-          </label>
-        </div>
-        <div class="lib__actions">
-          <button type="button" class="lib__btn lib__btn--primary lib__btn--lg" @click="addBook">
-            创建图书
-          </button>
-        </div>
-      </section>
-    </div>
+            <button type="button" class="lib__btn lib__btn--primary" @click="addCategory">
+              添加分类
+            </button>
+          </div>
+        </section>
 
-    <div v-if="msg" class="lib__flash lib__flash--ok" role="status">{{ msg }}</div>
-    <div v-if="err" class="lib__flash lib__flash--err" role="alert">{{ err }}</div>
+        <section
+          v-show="activePanel === 'settings'"
+          class="lib__card lib__card--panel"
+          :aria-hidden="activePanel !== 'settings'"
+          aria-labelledby="lib-site-heading"
+        >
+          <h2 id="lib-site-heading" class="lib__card-title">{{ panelTitle }}</h2>
+          <label class="lib__toggle">
+            <input
+              type="checkbox"
+              :checked="requireBorrowToReadChapters"
+              :disabled="settingsLoading"
+              @click.prevent="toggleRequireBorrowToRead"
+            />
+            <span class="lib__toggle-text">
+              阅读章节正文须先借阅本书（在借中）
+              <span class="lib__toggle-hint"
+                >开启后，未登录或未有本书在借记录的用户无法阅读章节正文。</span
+              >
+            </span>
+          </label>
+        </section>
+      </div>
+    </div>
 
     <footer class="lib__foot">
       <router-link class="lib__link" to="/books">图书列表</router-link>
@@ -168,10 +278,79 @@ async function addBook() {
   --surface: #ffffff;
   --border: #e2e8f0;
   width: 100%;
-  max-width: min(52rem, 100%);
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   padding: 0.5rem clamp(1rem, 3vw, 2rem) 2.5rem;
   box-sizing: border-box;
+}
+
+.lib__layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.lib__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 0.85rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 6px -1px rgba(15, 23, 42, 0.05),
+    0 10px 28px -12px rgba(15, 23, 42, 0.08);
+}
+
+.lib__sidebar-label {
+  margin: 0 0 0.5rem;
+  padding: 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.lib__nav-item {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.62rem 0.75rem;
+  text-align: left;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #475569;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.lib__nav-item:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.lib__nav-item--active {
+  color: var(--teal-dark);
+  background: linear-gradient(135deg, rgba(13, 148, 136, 0.12), rgba(13, 148, 136, 0.06));
+  border-color: rgba(13, 148, 136, 0.35);
+  box-shadow: inset 3px 0 0 var(--teal);
+}
+
+.lib__main {
+  min-width: 0;
+}
+
+.lib__card--panel {
+  margin: 0;
 }
 
 .lib__head {
@@ -191,12 +370,6 @@ async function addBook() {
   font-size: 0.92rem;
   color: #64748b;
   line-height: 1.5;
-}
-
-.lib__stack {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
 }
 
 .lib__card {
@@ -228,6 +401,43 @@ async function addBook() {
   border-radius: 3px;
   background: linear-gradient(180deg, var(--teal), var(--teal-dark));
   flex-shrink: 0;
+}
+
+.lib__toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.lib__toggle input {
+  margin-top: 0.2rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--teal);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.lib__toggle input:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.lib__toggle-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+.lib__toggle-hint {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #64748b;
 }
 
 .lib__cat-row {
@@ -368,26 +578,6 @@ async function addBook() {
   border-radius: 12px;
 }
 
-.lib__flash {
-  margin-top: 1rem;
-  padding: 0.65rem 1rem;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  line-height: 1.45;
-}
-
-.lib__flash--ok {
-  background: #ecfdf5;
-  color: #065f46;
-  border: 1px solid #a7f3d0;
-}
-
-.lib__flash--err {
-  background: #fef2f2;
-  color: #991b1b;
-  border: 1px solid #fecaca;
-}
-
 .lib__foot {
   margin-top: 2rem;
   padding-top: 1rem;
@@ -408,5 +598,36 @@ async function addBook() {
 .lib__dot {
   margin: 0 0.35rem;
   color: #94a3b8;
+}
+
+@media (max-width: 720px) {
+  .lib__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lib__sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0.75rem 0.65rem;
+    gap: 0.5rem;
+  }
+
+  .lib__sidebar-label {
+    width: 100%;
+    margin-bottom: 0.15rem;
+  }
+
+  .lib__nav-item {
+    flex: 1 1 auto;
+    min-width: calc(33.333% - 0.35rem);
+    text-align: center;
+    padding: 0.55rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .lib__nav-item--active {
+    box-shadow: inset 0 -3px 0 var(--teal);
+  }
 }
 </style>

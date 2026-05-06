@@ -2,8 +2,8 @@ import re
 from typing import Optional
 
 from django.conf import settings
-from django.db import transaction
-from django.db.models import BooleanField, Count, Exists, OuterRef, Value
+from django.db import IntegrityError, transaction
+from django.db.models import BooleanField, Count, Exists, F, OuterRef, Value
 from django.utils import timezone
 from rest_framework import serializers
 
@@ -18,6 +18,7 @@ from .models import (
     BorrowRecord,
     Category,
     Notification,
+    SiteSettings,
 )
 
 
@@ -42,6 +43,13 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ("id", "name")
+
+
+class SiteSettingsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SiteSettings
+        fields = ("require_borrow_to_read_chapters", "updated_at")
+        read_only_fields = ("updated_at",)
 
 
 class BookListSerializer(serializers.ModelSerializer):
@@ -90,6 +98,9 @@ class BookChapterDetailSerializer(serializers.ModelSerializer):
 class BookDetailSerializer(BookListSerializer):
     review_eligible = serializers.SerializerMethodField()
     has_my_review = serializers.SerializerMethodField()
+    reading_requires_borrow = serializers.SerializerMethodField()
+    can_read_chapters = serializers.SerializerMethodField()
+    has_my_active_borrow = serializers.SerializerMethodField()
 
     class Meta(BookListSerializer.Meta):
         fields = BookListSerializer.Meta.fields + (
@@ -97,12 +108,18 @@ class BookDetailSerializer(BookListSerializer):
             "updated_at",
             "review_eligible",
             "has_my_review",
+            "reading_requires_borrow",
+            "can_read_chapters",
+            "has_my_active_borrow",
         )
         read_only_fields = (
             "created_at",
             "available_copies",
             "review_eligible",
             "has_my_review",
+            "reading_requires_borrow",
+            "can_read_chapters",
+            "has_my_active_borrow",
         )
 
     def get_review_eligible(self, obj: Book) -> bool:
@@ -119,6 +136,32 @@ class BookDetailSerializer(BookListSerializer):
             return False
         return BookReview.objects.filter(
             user_id=request.user.id, book_id=obj.id
+        ).exists()
+
+    def get_reading_requires_borrow(self, obj: Book) -> bool:
+        return SiteSettings.get_solo().require_borrow_to_read_chapters
+
+    def get_can_read_chapters(self, obj: Book) -> bool:
+        if not SiteSettings.get_solo().require_borrow_to_read_chapters:
+            return True
+        request = self.context.get("request")
+        if not request or not request.user.is_authenticated:
+            return False
+        return BorrowRecord.objects.filter(
+            user_id=request.user.id,
+            book_id=obj.id,
+            status=BorrowRecord.Status.BORROWED,
+        ).exists()
+
+    def get_has_my_active_borrow(self, obj: Book) -> bool:
+        """当前用户是否已有本书「在借」记录（未归还前不可再借第二册）。"""
+        request = self.context.get("request")
+        if not request or not request.user.is_authenticated:
+            return False
+        return BorrowRecord.objects.filter(
+            user_id=request.user.id,
+            book_id=obj.id,
+            status=BorrowRecord.Status.BORROWED,
         ).exists()
 
 
@@ -226,24 +269,30 @@ class BorrowCreateSerializer(serializers.Serializer):
         else:
             days = validated_data.get("days", getattr(settings, "BORROW_DAYS", 30))
             due = now + timezone.timedelta(days=days)
-        with transaction.atomic():
-            locked = Book.objects.select_for_update().get(pk=book.pk)
-            if locked.available_copies < 1:
-                raise serializers.ValidationError("该书暂无在架副本。")
-            if BorrowRecord.objects.filter(
-                user=user,
-                book=locked,
-                status=BorrowRecord.Status.BORROWED,
-            ).exists():
-                raise serializers.ValidationError("您已借阅该书且尚未归还。")
-            locked.available_copies -= 1
-            locked.save(update_fields=["available_copies", "updated_at"])
-            return BorrowRecord.objects.create(
-                user=user,
-                book=locked,
-                due_at=due,
-                status=BorrowRecord.Status.BORROWED,
-            )
+        try:
+            with transaction.atomic():
+                locked = Book.objects.select_for_update().get(pk=book.pk)
+                if BorrowRecord.objects.filter(
+                    user=user,
+                    book=locked,
+                    status=BorrowRecord.Status.BORROWED,
+                ).exists():
+                    raise serializers.ValidationError("您已借阅该书且尚未归还。")
+                # 条件 UPDATE：单行原子扣减；SQLite 等忽略 select_for_update 时仍靠此行避免超借
+                n = Book.objects.filter(
+                    pk=locked.pk, available_copies__gte=1
+                ).update(available_copies=F("available_copies") - 1)
+                if n != 1:
+                    raise serializers.ValidationError("该书暂无在架副本。")
+                return BorrowRecord.objects.create(
+                    user=user,
+                    book_id=locked.pk,
+                    due_at=due,
+                    status=BorrowRecord.Status.BORROWED,
+                )
+        except IntegrityError:
+            # 条件唯一约束下并发 create 失败；在 atomic 外捕获以便整段事务回滚、库存自动还原
+            raise serializers.ValidationError("您已借阅该书且尚未归还。")
 
 
 class BookReviewSerializer(serializers.ModelSerializer):

@@ -1,6 +1,7 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { listBorrows, renewBorrow, returnBook } from '../api/books'
+import { showToast } from '../composables/useToast'
 
 const list = ref([])
 const count = ref(0)
@@ -16,9 +17,6 @@ const actionLoading = ref(false)
 const renewModalVisible = ref(false)
 const returnModalVisible = ref(false)
 const currentBorrow = ref(null)
-const toastVisible = ref(false)
-const toastText = ref('')
-let toastTimer = null
 
 function buildParams() {
   return {
@@ -60,18 +58,6 @@ watch([page, pageSize], () => {
 function updateRow(data) {
   const i = list.value.findIndex((x) => x.id === data.id)
   if (i >= 0) list.value[i] = { ...data }
-}
-
-function showToast(text) {
-  toastText.value = text
-  toastVisible.value = true
-  if (toastTimer != null) {
-    window.clearTimeout(toastTimer)
-  }
-  toastTimer = window.setTimeout(() => {
-    toastVisible.value = false
-    toastTimer = null
-  }, 3000)
 }
 
 function openRenewModal(r) {
@@ -185,12 +171,6 @@ function openRenewDueAtPicker() {
   openDateTimePicker(renewDueAtInput.value)
 }
 
-onBeforeUnmount(() => {
-  if (toastTimer != null) {
-    window.clearTimeout(toastTimer)
-    toastTimer = null
-  }
-})
 </script>
 
 <template>
@@ -361,12 +341,6 @@ onBeforeUnmount(() => {
               </button>
             </div>
           </div>
-        </div>
-      </Transition>
-
-      <Transition name="mb-toast">
-        <div v-if="toastVisible" class="mb-toast" role="status" aria-live="polite">
-          {{ toastText }}
         </div>
       </Transition>
     </Teleport>
@@ -571,21 +545,6 @@ h1 {
 .mb-btn--primary:hover:not(:disabled) {
   background: linear-gradient(135deg, #dcb983, #c99a61);
 }
-.mb-toast {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1300;
-  padding: 12px 22px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #0d9488, #0f766e);
-  color: #fff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  box-shadow: 0 12px 32px -10px rgba(15, 23, 42, 0.4);
-  pointer-events: none;
-}
 .mb-modal-enter-active,
 .mb-modal-leave-active {
   transition: opacity 0.2s ease;
@@ -593,14 +552,5 @@ h1 {
 .mb-modal-enter-from,
 .mb-modal-leave-to {
   opacity: 0;
-}
-.mb-toast-enter-active,
-.mb-toast-leave-active {
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-.mb-toast-enter-from,
-.mb-toast-leave-to {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.94);
 }
 </style>

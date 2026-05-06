@@ -96,6 +96,9 @@ STATIC_URL = "static/"
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+# MySQL 不创建带 condition 的 UniqueConstraint（Django 报 models.W036）。库存与防重借由事务 +
+# `select_for_update` + 条件 `F()` 扣减等保证；保留模型上的约束定义以便 PostgreSQL / SQLite 等环境。
+SILENCED_SYSTEM_CHECKS = ["models.W036"]
 
 AUTH_USER_MODEL = "accounts.User"
 

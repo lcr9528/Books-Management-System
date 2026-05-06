@@ -2,8 +2,8 @@
 
 前后端分离的图书借阅与在线阅读示例项目。
 
-- **后端**：Django 4 + Django REST Framework，JWT 鉴权，MySQL 存储；提供图书/分类/章节/借阅等 REST API，Django Admin 做后台管理。
-- **前端**：Vue 3 + Vite + Vue Router + Axios 单页应用；支持按分类浏览、图书详情、**章节在线阅读**（日间/夜间主题）、个人借阅与续借/归还、图书管理员前台录入等。
+- **后端**：Django 4 + Django REST Framework，JWT 鉴权，MySQL 存储；提供图书/分类/章节/借阅、**站点设置（单例）**、**读者书评与嵌套评论、点赞、站内通知**等 REST API，Django Admin 做后台管理。
+- **前端**：Vue 3 + Vite + Vue Router + Axios 单页应用；支持按分类浏览、图书详情、**章节在线阅读**（日间/夜间主题）、**读者书评区（发表/回复/点赞）**、**消息通知**、个人借阅与续借/归还、**全局 Toast 提示**、图书管理员侧栏工作台；路由切换时对当前用户 `/me` 请求做**短时节流**，减轻跳转卡顿。
 
 > 说明：项目内可配合 **飞卢导出目录** 用管理命令批量导入书目与章节（见下文「飞卢数据导入」）；详见仓库内 `docs/飞卢图书与章节导入操作说明.md`。
 
@@ -27,11 +27,13 @@
 | 角色 | 能力 |
 |------|------|
 | 访客 | 浏览首页、图书列表（含**左侧分类筛选**）、图书详情、公开 API 的只读访问（受 DRF 权限控制） |
-| 登录用户 | 借阅/续借/归还、**我的借阅**（仅见本人记录，含超级管理员与图书管理员）个人资料、忘记密码 |
-| 图书管理员（`is_librarian`） | 除上表外，可访问前台 **`/librarian`**：新增分类、新增图书；**全员借阅记录**请在 **Django Admin** 查看 |
+| 登录用户 | 借阅/续借/归还、**我的借阅**（仅见本人记录，含超级管理员与图书管理员）；**同一本书未归还前不可再次借阅**（在架册数大于 1 时亦如此）；个人资料、忘记密码；**借阅过该书**可发表读者书评与评论/回复、点赞；**消息通知**（书评被赞/被评/评论被回复，可跳转图书详情并定位评论） |
+| 图书管理员（`is_librarian`） | 除上表外，可访问前台 **`/librarian`**（左侧目录）：**新增图书**、**新增图书分类**、**阅读正文开关**（与 Admin「站点设置」同源）；**全员借阅记录**请在 **Django Admin** 查看 |
 | 后台（Admin） | 超级用户/有权限账号：图书、分类、章节、借阅记录等全量维护 |
 
-**章节阅读**：路由 `/books/:id/chapters/:chapterId`；正文支持去重显示；顶栏可切换**日间/夜间**阅读主题（偏好存 `localStorage`）。
+**章节阅读**：路由 `/books/:id/chapters/:chapterId`；正文支持去重显示；顶栏可切换**日间/夜间**阅读主题（偏好存 `localStorage`）。若开启「阅读章节须先借阅」，未登录或对该书无**在借**记录时无法通过 API 获取章节正文；详情接口会返回 `reading_requires_borrow`、`can_read_chapters` 供前端提示与拦截。
+
+**读者书评**：图书详情页「读者书评」区；支持星级与正文、**嵌套回复**、书评与评论点赞、展开评论区；撰写区可点击「收起撰写」或区外点击收起；通知跳转支持 `#bd-rev-item-{书评id}` 与查询参数 `comment={评论id}` 自动展开并滚动至对应评论。
 
 ---
 
@@ -44,16 +46,17 @@
     ▼
 Django（REST API，前缀 /api/v1/）
     ├── accounts：注册、登录（JWT）、当前用户、密码重置
-    ├── books：图书 CRUD、分类、借阅；图书下属章节列表与单章正文
+    ├── books：图书 CRUD、分类、借阅；章节列表与正文；书评/评论/点赞；站内通知（列表、已读、未读数）；**站点设置 SiteSettings**（如「阅读章节须先借阅」）
     └── DEBUG：提供 MEDIA 下的封面上传等静态访问
     ▼
 MySQL
 ```
 
-- **鉴权**：前端将 `access`、`refresh` 存于 `localStorage`；Axios 拦截器（见 `frontend/src/api/client.js`）在请求头附加 `Authorization: Bearer <access>`，必要时刷新令牌。
+- **鉴权**：前端将 `access`、`refresh` 存于 `localStorage`；Axios 拦截器（见 `frontend/src/api/client.js`）在请求头附加 `Authorization: Bearer <access>`，必要时刷新令牌。路由全局前置会调用 `refreshUser()` 同步登录态；**短期内重复跳转不会对 `/auth/me/` 连续请求**（见 `frontend/src/auth.js` 节流；登录成功、应用挂载、资料保存后仍会 `force` 拉取最新用户）。
 - **API 前缀**：统一 **`/api/v1/`**。
 - **分页**：图书列表、借阅列表等支持 `page`、`page_size`（图书视图 `max_page_size` 等有上限）；**分类列表**接口为便于侧边栏一次拉全，已关闭分页（见 `CategoryViewSet`）。
 - **筛选**：图书列表支持 `search`（书名、作者、ISBN、出版社）、`category`（分类主键 id）。
+- **借阅与在架册数（并发）**：新建借阅在 **`transaction.atomic()`** 内对 **`Book` 行锁（`select_for_update`）**，并用 **`WHERE available_copies >= 1` 的条件 `UPDATE` + `F()` 扣减** 单行原子减库存，避免多副本同时借出时出现「超借」。归还将 **`available_copies`** 用单行 **`UPDATE`**（`Least(F+1, total_copies)`）原子加回，避免并发归还时的丢失更新。模型上对「同一用户 + 同一图书 + 状态为在借」声明 **条件唯一约束**（迁移见 `books` 应用 **`0008_borrow_concurrency_uniq`**）；**MySQL** 下 Django **不会在数据库中创建该条件唯一约束**（项目静默系统检查 `models.W036`），生产环境依赖 **InnoDB 行锁与上述原子更新**；若使用 PostgreSQL / SQLite 等，约束可被数据库实际创建并在并发插入时拒重。
 
 ---
 
@@ -64,17 +67,19 @@ DRF/
 ├── backend/                      # Django 项目根（manage.py 所在）
 │   ├── config/                   # settings、根 urls、WSGI/ASGI
 │   ├── accounts/                 # 用户注册、JWT、资料、密码重置
-│   ├── books/                    # Book、Category、BookChapter、BorrowRecord
+│   ├── books/                    # Book、Category、BookChapter、BorrowRecord、SiteSettings、书评与评论、Notification 等
 │   ├── manage.py
 │   ├── requirements.txt
 │   └── .env.example              # 复制为 .env 使用
 ├── frontend/
 │   ├── src/
-│   │   ├── api/                  # Axios 封装（books、auth、borrows 等）
-│   │   ├── views/                # 各页面（图书列表/详情/章节阅读/借阅/管理员…）
+│   │   ├── api/                  # Axios 封装（books、auth、borrows、notifications 等）
+│   │   ├── components/           # 可复用组件（ReviewCommentItem、AppToast 全局提示等）
+│   │   ├── composables/          # useToast 等组合式逻辑
+│   │   ├── views/                # 各页面（图书列表/详情/章节阅读/借阅/通知/管理员…）
 │   │   ├── router/               # 路由与登录、图书管理员守卫
-│   │   ├── auth.js               # refreshUser、当前用户状态
-│   │   └── App.vue               # 顶栏导航
+│   │   ├── auth.js               # refreshUser（含节流）、当前用户状态
+│   │   └── App.vue               # 顶栏导航、挂载全局 Toast
 │   ├── vite.config.js            # 代理 /api、/media → 后端
 │   └── package.json
 ├── scripts/
@@ -177,8 +182,9 @@ npm run build
 | `/login`、`/register` | 登录 / 注册 | 公开 |
 | `/forgot-password` | 忘记密码 | 公开 |
 | `/me/profile` | 个人资料 | 需登录 |
+| `/me/notifications` | 消息通知（标记已读、跳转图书与评论） | 需登录 |
 | `/me/borrows` | 我的借阅 | 需登录 |
-| `/librarian` | 新增分类 / 新增图书 | 需登录且 **`is_librarian`** |
+| `/librarian` | 馆员工作台（侧栏：新增图书、新增分类、阅读正文开关） | 需登录且 **`is_librarian`** |
 
 ---
 
@@ -204,14 +210,24 @@ npm run build
 |------|------|------|
 | GET/POST | `/api/v1/categories/` | 分类列表（列表无分页）/ 新建 |
 | GET/PATCH/… | `/api/v1/books/` | 图书列表（支持 `search`、`category`）/ 新建（馆员权限） |
-| GET | `/api/v1/books/{id}/` | 图书详情 |
+| GET | `/api/v1/books/{id}/` | 图书详情（含 `review_eligible`、`has_my_review`、`reading_requires_borrow`、`can_read_chapters`、`has_my_active_borrow` 等只读字段） |
+| GET/PATCH | `/api/v1/site-settings/` | 站点设置单例；GET 公开；PATCH **仅图书管理员**（与 Admin「站点设置」一致） |
 | GET | `/api/v1/books/{book_pk}/chapters/` | 章节列表 |
-| GET | `/api/v1/books/{book_pk}/chapters/{pk}/` | 单章正文 |
+| GET | `/api/v1/books/{book_pk}/chapters/{pk}/` | 单章正文；若开启「阅读章节须先借阅」且不满足条件则返回 **403** |
+| GET/POST | `/api/v1/books/{book_pk}/reviews/` | 某书读者书评列表 / 发表（需借阅过该书） |
+| GET | `/api/v1/books/{book_pk}/reviews/mine/` | 当前用户对该书的书评 |
+| GET/POST | `/api/v1/books/{book_pk}/reviews/{review_pk}/comments/` | 书评下评论（树形列表）/ 发表评论或回复 |
+| POST | `/api/v1/books/{book_pk}/reviews/{review_pk}/like/` | 书评点赞切换 |
+| POST | `/api/v1/books/{book_pk}/reviews/{review_pk}/comments/{comment_pk}/like/` | 评论点赞切换 |
 | GET/POST | `/api/v1/borrows/` | **仅返回当前用户**借阅记录 / 新建借阅 |
 | POST | `/api/v1/borrows/{id}/return/` | 归还 |
 | POST | `/api/v1/borrows/{id}/renew/` | 续借 |
+| GET | `/api/v1/notifications/` | 当前用户通知列表（分页） |
+| POST | `/api/v1/notifications/{id}/read/` | 单条标记已读 |
+| POST | `/api/v1/notifications/mark-all-read/` | 全部标记已读 |
+| GET | `/api/v1/notifications/unread-count/` | 未读条数 |
 
-**借阅接口说明**：REST 借阅列表与操作对象均限定为**登录用户本人**；查看或维护**所有人**的借阅请在 **`/admin/`** 使用 `BorrowRecord`。
+**借阅接口说明**：REST 借阅列表与操作对象均限定为**登录用户本人**；**同一用户、同一本书在存在「在借」记录时不可再次借阅**（与库存是否大于 1 无关）；参见上文「借阅与在架册数（并发）」。查看或维护**所有人**的借阅请在 **`/admin/`** 使用 `BorrowRecord`。
 
 ---
 
@@ -232,8 +248,10 @@ npm run build
 
 | 项 | 说明 |
 |----|------|
-| `.env` | MySQL、SECRET_KEY、`ALLOWED_HOSTS`、CORS、借阅天数、邮件等 |
+| `.env` | MySQL、SECRET_KEY、`ALLOWED_HOSTS`、CORS、借阅天数、邮件等（**不含**「阅读章节须先借阅」开关） |
 | `BORROW_DAYS` | 默认借期（天），可被环境变量覆盖 |
+| `SiteSettings`（迁移 `books` 应用内） | 单例表，存 **`require_borrow_to_read_chapters`** 等全局开关；在 **Django Admin「站点设置」**、**`GET/PATCH /api/v1/site-settings/`** 或前台 **`/librarian`** 馆员页修改；开启「阅读章节须先借阅」后须登录且本书**在借**中才可经 API 读取章节正文 |
+| `SILENCED_SYSTEM_CHECKS` | `config/settings.py` 中静默 **`models.W036`**：MySQL 不支持 Django 写入「带条件的 UniqueConstraint」，借阅防重与库存一致性依赖事务与原子 `UPDATE`（见上文「借阅与在架册数（并发）」） |
 | `MEDIA_ROOT` / `MEDIA_URL` | 图书封面等上传目录与 URL；开发 DEBUG 下由 Django 对外提供 |
 
 ---
@@ -260,8 +278,9 @@ npm run build
 ## 开发与调试建议
 
 - 浏览器 **开发者工具 → Network**：过滤 `/api/v1` 查看请求与 JWT 是否附带。
-- 后端 **`django.contrib.admin`**：便于核对 `Book`、`BookChapter`、`BorrowRecord`、`Category`。
+- 后端 **`django.contrib.admin`**：便于核对 `Book`、`BookChapter`、`BorrowRecord`、`Category`、**`SiteSettings`（站点设置）**。
 - 修改模型后执行 **`makemigrations` / `migrate`**。
+- 借阅并发实现要点：`backend/books/serializers.py` 中 **`BorrowCreateSerializer`**、`backend/books/views.py` 中 **`return_book`**。
 
 ---
 

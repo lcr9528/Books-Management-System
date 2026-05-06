@@ -26,6 +26,7 @@ import {
 } from '../api/books'
 import ReviewCommentItem from '../components/ReviewCommentItem.vue'
 import { useUser, isLibrarian } from '../auth'
+import { showToast } from '../composables/useToast'
 
 const route = useRoute()
 const router = useRouter()
@@ -33,7 +34,18 @@ const { isLoggedIn, user } = useUser()
 const id = computed(() => Number(route.params.id))
 const book = ref(null)
 const err = ref('')
-const msg = ref('')
+
+/** 无在架、或本人已在借本书时不可再借（后端亦限制一人一书一条在借） */
+const borrowDisabled = computed(() => {
+  const b = book.value
+  if (!b) return true
+  if (b.available_copies < 1) return true
+  if (isLoggedIn.value && b.has_my_active_borrow) return true
+  return false
+})
+
+/** 点击章节时因未借阅被拦截：弹窗提示（须手动点「知道了」关闭） */
+const readBlockModalVisible = ref(false)
 const borrowModalVisible = ref(false)
 const borrowDueAt = ref('')
 const borrowLoading = ref(false)
@@ -167,6 +179,12 @@ function onDocumentClickCollapseComments(ev) {
   for (const k of Object.keys(commentsExpanded)) {
     if (commentsExpanded[k]) commentsExpanded[k] = false
   }
+
+  if (reviewComposeOpen.value) {
+    if (t.closest?.('.bd__rev-form-wrap')) return
+    if (t.closest?.('[data-bd-rev-compose-toggle]')) return
+    reviewComposeOpen.value = false
+  }
 }
 
 function countCommentsInTree(list) {
@@ -290,6 +308,7 @@ async function deleteCommentRow(reviewId, node) {
 
 async function fetchBookPage() {
   err.value = ''
+  readBlockModalVisible.value = false
   chaptersErr.value = ''
   chapters.value = []
   book.value = null
@@ -515,14 +534,26 @@ watch(
 )
 
 function openChapter(ch) {
+  if (book.value?.reading_requires_borrow && !book.value?.can_read_chapters) {
+    if (!isLoggedIn.value) {
+      router.push({ name: 'login', query: { next: route.fullPath } })
+      return
+    }
+    readBlockModalVisible.value = true
+    return
+  }
   router.push({
     name: 'book-chapter-read',
     params: { id: String(id.value), chapterId: String(ch.id) },
   })
 }
 
+function closeReadBlockModal() {
+  readBlockModalVisible.value = false
+}
+
 function openBorrowModal() {
-  if (book.value?.available_copies < 1) return
+  if (borrowDisabled.value) return
   borrowDueAt.value = ''
   borrowModalVisible.value = true
 }
@@ -541,7 +572,6 @@ function formatDateTime(dt) {
 
 async function confirmBorrow() {
   err.value = ''
-  msg.value = ''
   if (!isLoggedIn.value) {
     err.value = '请先登录后再借阅。'
     return
@@ -555,8 +585,11 @@ async function confirmBorrow() {
     const { data } = await borrowBook(id.value, {
       due_at: new Date(borrowDueAt.value).toISOString(),
     })
-    msg.value = `借阅成功，归还时间：${formatDateTime(data.due_at)}`
-    if (book.value) book.value.available_copies = book.value.available_copies - 1
+    showToast(`借阅成功，归还时间：${formatDateTime(data.due_at)}`)
+    if (book.value) {
+      book.value.available_copies = Math.max(0, book.value.available_copies - 1)
+      book.value.has_my_active_borrow = true
+    }
     borrowModalVisible.value = false
     try {
       const { data: bd } = await getBook(id.value)
@@ -775,7 +808,6 @@ async function confirmReviewDelete() {
           <p class="bd__stat">
             在架/总册：<span class="bd__stat-num">{{ book.available_copies }} / {{ book.total_copies }}</span>
           </p>
-          <p v-if="msg" class="ok">{{ msg }}</p>
           <p v-if="err" class="err">{{ err }}</p>
           <p v-if="!isLoggedIn" class="bd__login-hint">
             请 <router-link to="/login">登录</router-link> 后借阅。
@@ -791,10 +823,18 @@ async function confirmReviewDelete() {
     <div class="bd__tail">
       <div class="bd__info-actions">
         <div v-if="isLoggedIn" class="bd__act">
-          <button type="button" :disabled="book.available_copies < 1" @click="openBorrowModal">
+          <button
+            type="button"
+            :disabled="borrowDisabled || borrowLoading"
+            @click="openBorrowModal"
+          >
             借阅
           </button>
           <span v-if="book.available_copies < 1" class="muted">（无在架册）</span>
+          <span
+            v-else-if="book.has_my_active_borrow"
+            class="muted"
+          >（您已借阅本书）</span>
         </div>
       </div>
       <div class="bd__info-foot">
@@ -808,6 +848,15 @@ async function confirmReviewDelete() {
 
     <section class="bd__toc" aria-labelledby="bd-toc-h">
       <h2 id="bd-toc-h" class="bd__toc-h">目录</h2>
+      <p
+        v-if="book?.reading_requires_borrow && !book?.can_read_chapters"
+        class="muted bd__toc-gate"
+      >
+        <template v-if="!isLoggedIn">
+          阅读正文需先 <router-link to="/login">登录</router-link> 并借阅本书。
+        </template>
+        <!-- <template v-else>请先点击上方「借阅」成功；须在「在借」期间方可阅读章节正文。</template> -->
+      </p>
       <p v-if="chaptersErr" class="err bd__toc-msg">{{ chaptersErr }}</p>
       <p v-else-if="chapters.length === 0" class="bd__toc-empty muted">
         暂无章节
@@ -846,6 +895,7 @@ async function confirmReviewDelete() {
             type="button"
             class="bd__reviews-head-btn"
             :class="{ 'bd__reviews-head-btn--active': reviewComposeOpen }"
+            data-bd-rev-compose-toggle
             @click="toggleReviewCompose"
           >
             {{ reviewComposeOpen ? '收起撰写' : '发表书评' }}
@@ -1104,9 +1154,9 @@ async function confirmReviewDelete() {
         </div>
       </div>
 
-      <p v-else-if="isLoggedIn && !book.review_eligible" class="bd__rev-hint muted">
+      <!-- <p v-else-if="isLoggedIn && !book.review_eligible" class="bd__rev-hint muted">
         借阅过本书后即可撰写书评（归还后仍可保留书评权限）。
-      </p>
+      </p> -->
       <!-- <p v-else-if="!isLoggedIn" class="bd__rev-hint muted">
         <router-link to="/login">登录</router-link>
         后可查看自己是否具备书评资格（须曾借阅该书）。
@@ -1141,6 +1191,32 @@ async function confirmReviewDelete() {
               </button>
               <button type="button" class="bd-btn bd-btn--primary" :disabled="borrowLoading" @click="confirmBorrow">
                 {{ borrowLoading ? '提交中…' : '确定借阅' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
+
+    <Teleport to="body">
+      <Transition name="bd-modal">
+        <div
+          v-if="readBlockModalVisible"
+          class="bd-modal-mask bd-modal-mask--read-block"
+        >
+          <div
+            class="bd-modal-panel bd-modal-panel--confirm"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="bd-read-block-title"
+          >
+            <h3 id="bd-read-block-title" class="bd-modal-title">暂时无法阅读章节正文</h3>
+            <p class="bd-modal-alert-text">
+              须借阅本书并保持「在借」状态，方可阅读正文。
+            </p>
+            <div class="bd-modal-actions bd-modal-actions--single">
+              <button type="button" class="bd-btn bd-btn--primary" @click="closeReadBlockModal">
+                知道了
               </button>
             </div>
           </div>
@@ -1394,6 +1470,11 @@ a {
   margin: 0 0 0.65rem;
   color: #1a1a2e;
 }
+.bd__toc-gate {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
 .bd__toc-msg {
   margin: 0;
 }
@@ -1462,6 +1543,19 @@ a {
 }
 .bd-modal-mask--confirm {
   z-index: 1210;
+}
+.bd-modal-mask--read-block {
+  z-index: 1220;
+}
+.bd-modal-alert-text {
+  margin: 0 0 6px;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #b91c1c;
+}
+.bd-modal-actions--single {
+  justify-content: center;
 }
 .bd-modal-panel {
   width: min(520px, 100%);
