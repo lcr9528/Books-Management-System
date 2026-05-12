@@ -12,6 +12,8 @@ r"""
   python scripts/faloo_novel_spider.py --novel-id 1525878 --out ./novel_export
   python scripts/faloo_novel_spider.py --novel-id 1525878 --chapters 50   # 前 50 章
   python scripts/faloo_novel_spider.py --novel-id 1525878 --chapters 0    # 合并目录分页后的全部章节
+  # 站点若要求登录后阅读正文：在浏览器登录飞卢后复制 Cookie，见脚本 --help 与 docs 说明
+  python scripts/faloo_novel_spider.py --novel-id 1525878 --cookie-file ./faloo_cookies.txt
   python scripts/faloo_novel_spider.py --ranking-url https://b.faloo.com/y_7_0_0_0_0_3_1.html --chapters 10 --max-books 5 --max-ranking-pages 3
   cd backend
   python manage.py import_faloo_export --path c:\Users\Administrator\Desktop\DRF\novel_export
@@ -47,11 +49,74 @@ def _session() -> requests.Session:
     return s
 
 
+def _strip_cookie_prefix(value: str) -> str:
+    """去掉误粘贴的「Cookie:」前缀。"""
+    s = value.strip()
+    if s.lower().startswith("cookie:"):
+        return s[7:].strip()
+    return s
+
+
+def _merge_cookie_header(sess: requests.Session, cookie_fragment: str) -> None:
+    """追加 Cookie 请求头（与浏览器「复制为 cURL」中的 Cookie 一致）。"""
+    c = _strip_cookie_prefix(cookie_fragment)
+    if not c:
+        return
+    old = (sess.headers.get("Cookie") or "").strip()
+    sess.headers["Cookie"] = f"{old}; {c}" if old else c
+
+
+def apply_saved_cookie_header(sess: requests.Session, cookie_inline: str | None, cookie_file: str | None) -> None:
+    """创建 Session 后调用：合并命令行/文件中的 Cookie。"""
+    parts: list[str] = []
+    if cookie_inline:
+        parts.append(_strip_cookie_prefix(cookie_inline))
+    if cookie_file:
+        p = Path(cookie_file)
+        if not p.is_file():
+            raise FileNotFoundError(f"Cookie 文件不存在：{p}")
+        raw = p.read_text(encoding="utf-8", errors="replace").strip()
+        if raw.startswith("\ufeff"):
+            raw = raw.lstrip("\ufeff")
+        lines = [
+            ln.strip()
+            for ln in raw.splitlines()
+            if ln.strip() and not ln.strip().startswith("#")
+        ]
+        if len(lines) > 1:
+            kv_lines = [_strip_cookie_prefix(ln) for ln in lines if "=" in ln]
+            if kv_lines:
+                parts.append("; ".join(kv_lines))
+        elif len(lines) == 1:
+            parts.append(_strip_cookie_prefix(lines[0]))
+    if not parts:
+        return
+    merged = "; ".join(x for x in parts if x)
+    _merge_cookie_header(sess, merged)
+
+
 def fetch_text(sess: requests.Session, url: str) -> str:
     r = sess.get(url, timeout=30)
     r.raise_for_status()
-    r.encoding = r.apparent_encoding or "utf-8"
+    ct = (r.headers.get("Content-Type") or "").lower()
+    # 飞卢章节页常为 gb2312；错误解码会导致中文乱码、选择器匹配失败
+    if "gb2312" in ct or "gbk" in ct:
+        r.encoding = "gbk"
+    else:
+        r.encoding = r.apparent_encoding or "utf-8"
     return r.text
+
+
+def faloo_chapter_html_shows_login_wall(html: str) -> bool:
+    """章节 HTML 内 noveContent 仍含未登录提示（div.c_c1），说明服务端未认可登录态。"""
+    if "c_c1" not in html or "noveContent" not in html:
+        return False
+    soup = BeautifulSoup(html, "html.parser")
+    tip = soup.select_one("div.noveContent div.c_c1")
+    if not tip:
+        return False
+    t = tip.get_text(strip=True)
+    return bool(t) and ("登录" in t or "没有登录" in t or "尚未登录" in t or "注册账号" in t)
 
 
 def absolute_url(href: str, base: str = BASE_HOST) -> str:
@@ -380,19 +445,36 @@ def collect_chapters_from_all_toc_pages(
 
 
 def parse_chapter_body(html: str) -> tuple[str, str]:
-    """返回 (章节标题, 正文纯文本)。"""
+    """返回 (章节标题, 正文纯文本)。
+
+    阅读页正文通常在 ``div.noveContent`` 的 ``<p>`` 中；未登录时该区域多为登录提示 div（无 ``<p>``）。
+    部分章节可能仅有 ``<br>`` 分隔，故在无 ``<p>`` 时对容器做 ``get_text`` 回退（已去掉广告/登录块）。
+    """
     soup = BeautifulSoup(html, "html.parser")
     h1 = soup.select_one("div.c_l_title h1")
     chapter_title = h1.get_text(strip=True) if h1 else ""
     div = soup.select_one("div.noveContent")
     if not div:
         return chapter_title, ""
-    parts = []
+    # 去掉登录引导、VIP 推广等，避免 fallback 把提示语当作正文
+    for sel in (".c_c1", ".c_c3", ".c_c4"):
+        for bad in div.select(sel):
+            bad.decompose()
+    for sty in div.find_all("style"):
+        sty.decompose()
+    parts: list[str] = []
     for p in div.find_all("p"):
         t = p.get_text("\n", strip=True)
         if t:
             parts.append(t)
-    return chapter_title, "\n\n".join(parts)
+    if parts:
+        return chapter_title, "\n\n".join(parts)
+    # 无 <p> 时尝试整段文本（飞卢登录后偶见其它容器）
+    fallback = div.get_text("\n\n", strip=True)
+    junk = ("飞卢小说网", "按左右键翻页", "最新读者", "读者还喜欢", "打赏作者")
+    if any(j in fallback for j in junk):
+        return chapter_title, ""
+    return chapter_title, fallback
 
 
 def download_cover(sess: requests.Session, url: str, dest: Path) -> None:
@@ -615,6 +697,23 @@ def crawl_single_novel(
                 continue
             time.sleep(delay)
             ch_title, text = parse_chapter_body(body_html)
+            if not (text or "").strip():
+                if faloo_chapter_html_shows_login_wall(body_html):
+                    print(
+                        "[!] 本章 HTML 仍显示「未登录」区块（div.noveContent .c_c1），"
+                        "服务端未认可你的登录 Cookie。\n"
+                        "    常见原因：① Windows PowerShell 下使用 --cookie 时，"
+                        "Cookie 里的 **&**（如 KeenFire=...&UserID=...）会把参数截断，"
+                        "请改用 **--cookie-file**（UTF-8 文本文件，单行粘贴浏览器 Request Headers 里的整段 Cookie）；"
+                        "② Cookie 过期；③ 复制的不是 b.faloo.com 的请求 Cookie。",
+                        file=sys.stderr,
+                    )
+                else:
+                    print(
+                        "[!] 本章未解析到正文（div.noveContent 无有效段落）；"
+                        "若正文由前端异步加载，需扩展脚本请求接口或用浏览器导出。",
+                        file=sys.stderr,
+                    )
             fn = chap_dir / filename
             fn.write_text(
                 (ch_title + "\n\n" + text if ch_title else text),
@@ -694,11 +793,28 @@ def main() -> int:
         metavar="K",
         help="排行榜模式下最多爬取 K 本书（0 表示不限制，按榜单解析到的全部）",
     )
+    ap.add_argument(
+        "--cookie",
+        metavar="STR",
+        help='登录后的 Cookie（与 HTTP 请求头一致），如 name1=val1; name2=val2',
+    )
+    ap.add_argument(
+        "--cookie-file",
+        metavar="PATH",
+        help="从文件读取 Cookie：可单行整段，或多行每行 name=value（见文档）",
+    )
     args = ap.parse_args()
 
     out_root = Path(args.out).resolve()
     out_root.mkdir(parents=True, exist_ok=True)
     sess = _session()
+    try:
+        apply_saved_cookie_header(sess, args.cookie, args.cookie_file)
+    except FileNotFoundError as e:
+        print(f"[!] {e}", file=sys.stderr)
+        return 1
+    if args.cookie or args.cookie_file:
+        print("[*] 已附加 Cookie（用于需登录可见的正文等）；请勿泄露 cookie 文件。")
 
     if args.ranking_url:
         if args.book_url or args.novel_id:
